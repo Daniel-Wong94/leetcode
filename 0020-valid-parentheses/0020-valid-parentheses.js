@@ -15,8 +15,8 @@ var isValid = function(s) {
         if (char in match) {
             stack.push(char)
         } else {
+            if (!stack.length) return false;
             const open = stack.pop()
-            if (!open) return false;
             if (match[open] !== char) return false;
         }
     }
