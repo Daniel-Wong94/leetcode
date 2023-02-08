@@ -4,14 +4,20 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        count = {}
-        
+        majority = 0
+        count = 0
+
         for num in nums:
-            if not num in count:
-                count[num] = 1
+            if count == 0:
+                majority = num
+                
+            if majority == num:
+                count += 1
             else:
-                count[num]+= 1
-            
-            if count[num] > len(nums) / 2:
-                return num
+                count -= 1
+
+            if count == 0:
+                majority = num
+
+        return majority
         
