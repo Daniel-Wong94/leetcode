@@ -5,10 +5,11 @@
 var longestPalindrome = function(s) {
     // a palindrome consists of two even numbers of chars and an optional odd number
     // count the number of times a char shows up
-    // add up all the even numbers
-    // if there is an odd count left over, add one
-    // else just return the pairs summed up
-    // if there are no even pairs, then just return 1 for the length of any 1 char combination
+    // check each char count,
+    // if is greater than 1 and is even, add to evenCount
+    // if it is greater than 1 but is odd, add to evenCount minus 1 and set hasOdd = true
+    // if it is just 1, set hasOdd = true
+    // if hasOdd is set to true at the end of the iteration, return the evenCount + 1, else just evenCount
     
     const count = {}
     
