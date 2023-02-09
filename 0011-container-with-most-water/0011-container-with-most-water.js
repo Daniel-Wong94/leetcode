@@ -8,27 +8,16 @@ var maxArea = function(height) {
     let right = height.length - 1
     
     while (left < right) {
-        maxArea = Math.max(maxArea, getArea(height, left, right))
+        const distance = right - left
+        const area = Math.min(height[left], height[right]) * distance
+        maxArea = Math.max(maxArea, area)
         
-        // if (height[left + 1] > height[right - 1]) {
-        //     left++
-        // } else {
-        //     right--
-        // }
         if (height[left] < height[right]) {
-            left++;
+            left++
         } else {
-            right--;
+            right--
         }
-        
-        maxArea = Math.max(maxArea, getArea(height, left, right))
     }
     
     return maxArea;
 };
-
-const getArea = (height, left, right) => {
-    const distance = right - left
-    const area = Math.min(height[left], height[right]) * distance
-    return area;
-}
