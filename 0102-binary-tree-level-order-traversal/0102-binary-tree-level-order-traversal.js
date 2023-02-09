@@ -16,6 +16,7 @@ var levelOrder = function(root) {
     const queue = [ root ]
     
     while (queue.length) {
+        // save queue length before you start pushing into it in for loop
         const queueLength = queue.length;
         const level = []
         
