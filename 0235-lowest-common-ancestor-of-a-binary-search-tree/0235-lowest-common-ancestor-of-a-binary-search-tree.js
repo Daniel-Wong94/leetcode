@@ -18,9 +18,7 @@ const lowestCommonAncestor = (root, p, q) => {
     const pathP = getPath(root, p.val)
     const pathQ = getPath(root, q.val)
     const setQ = new Set(pathQ.map(node => node.val))
-    
-    console.log(pathP, pathQ)
-    
+        
     for (const node of pathP) {
         if (setQ.has(node.val)) {
             return node;
