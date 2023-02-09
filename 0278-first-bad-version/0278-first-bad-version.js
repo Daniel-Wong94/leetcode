@@ -27,17 +27,10 @@ var solution = function(isBadVersion) {
         while (left <= right) {
             mid = Math.floor((right - left) / 2) + left
 
-            if (isBadVersion(mid)) {
-                if (isBadVersion(mid-1)) {
-                    right = mid - 1;
-                } else {
-                    return mid
-                }
-            } else {
-                left = mid + 1;
-            }
+            if (isBadVersion(mid))
+                if (isBadVersion(mid-1)) right = mid - 1;
+                else return mid
+            else left = mid + 1;
         }
-        
-
     };
 }
