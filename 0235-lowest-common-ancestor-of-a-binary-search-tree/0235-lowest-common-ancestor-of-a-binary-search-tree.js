@@ -13,32 +13,44 @@
  * @return {TreeNode}
  */
 
-const lowestCommonAncestor = (root, p, q) => {
-    // get the path to p and q and then check which element appears in both paths first
-    const pathP = getPath(root, p.val)
-    const pathQ = getPath(root, q.val)
-    const setQ = new Set(pathQ.map(node => node.val))
+// const lowestCommonAncestor = (root, p, q) => {
+//     // get the path to p and q and then check which element appears in both paths first
+//     const pathP = getPath(root, p.val)
+//     const pathQ = getPath(root, q.val)
+//     const setQ = new Set(pathQ.map(node => node.val))
         
-    for (const node of pathP) {
-        if (setQ.has(node.val)) {
-            return node;
-        } 
-    }
-};
+//     for (const node of pathP) {
+//         if (setQ.has(node.val)) {
+//             return node;
+//         } 
+//     }
+// };
 
-const getPath = (root, target) => {
+// const getPath = (root, target) => {
+//     if (!root) return null;
+//     if (root.val === target) return [ root ];
+    
+//     const left = getPath(root.left, target)
+//     if (left) {
+//         left.push(root)
+//         return left;
+//     }
+    
+//     const right = getPath(root.right, target)
+//     if (right) {
+//         right.push(root)
+//         return right;
+//     }
+// }  
+
+const lowestCommonAncestor = (root, p, q) => {
     if (!root) return null;
-    if (root.val === target) return [root];
     
-    const left = getPath(root.left, target)
-    if (left) {
-        left.push(root)
-        return left;
+    if (p.val < root.val && q.val < root.val) {
+        return lowestCommonAncestor(root.left, p , q)
+    } else if (p.val > root.val && q.val > root.val) {
+        return lowestCommonAncestor(root.right, p , q)
+    } else {
+        return root;
     }
-    
-    const right = getPath(root.right, target)
-    if (right) {
-        right.push(root)
-        return right;
-    }
-}  
+}
