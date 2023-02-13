@@ -23,12 +23,11 @@ var getIntersectionNode = function(headA, headB) {
         
     while (currB) {
         if (pathA.includes(currB)) {
-            console.log("YES", currB)
             return currB
         }
         
         currB = currB.next
     }
     
-    return currA;
+    return null;
 };
