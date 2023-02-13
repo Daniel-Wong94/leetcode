@@ -12,22 +12,14 @@
  * @return {ListNode}
  */
 var getIntersectionNode = function(headA, headB) {
-    const pathA = []
-    let currA = headA;
-    let currB = headB;
+    // iterate A + B and B + A
+    let currA = headA, currB = headB
     
-    while (currA) {
-        pathA.push(currA)
-        currA = currA.next
-    }
-        
-    while (currB) {
-        if (pathA.includes(currB)) {
-            return currB
-        }
-        
-        currB = currB.next
+    // while loop will still end when both pointers are null
+    while (currA !== currB) {
+        currA = currA ? currA.next : headB
+        currB = currB ? currB.next : headA
     }
     
-    return null;
+    return currB;
 };
