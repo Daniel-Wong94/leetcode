@@ -3,14 +3,21 @@
  * @return {number[][]}
  */
 var subsets = function(nums) {
+    // base case
     if (!nums.length) return [[]]
     
     const firstElement = nums[0]
-    const subsetsWith = subsets(nums.slice(1))
-    const subsetsWithout = []
     
-    for (const subset of subsetsWith) {
-        subsetsWithout.push([firstElement, ...subset])
+    // decision branch without the first element
+    const subsetsWithout = subsets(nums.slice(1))
+    
+    // decision branch with the first element
+    const subsetsWith = []
+    
+    
+    // build up the "with" branch by combining the first element and the without subsets
+    for (const subset of subsetsWithout) {
+        subsetsWith.push([firstElement, ...subset])
     }
     
     return [...subsetsWith, ...subsetsWithout]
