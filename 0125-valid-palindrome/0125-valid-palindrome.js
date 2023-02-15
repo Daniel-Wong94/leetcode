@@ -13,14 +13,17 @@ var isPalindrome = function(s) {
         if (!alpha.includes(start)) {
             left++;
             continue
-        } else if (!alpha.includes(end)) {
+        }
+        
+        if (!alpha.includes(end)) {
             right--;
             continue;
-        } else {
-            if (start !== end) {
-                return false;
-            }
         }
+        
+        if (start !== end) {
+            return false;
+        }
+        
         left++
         right--
     }
