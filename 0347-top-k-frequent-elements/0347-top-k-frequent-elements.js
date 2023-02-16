@@ -12,11 +12,19 @@ var topKFrequent = function(nums, k) {
         count[num]++
     }
     
-    const maxCounts = Object.values(count).sort((a, b) => b - a).slice(0, k)
+    const maxCounts = new Array(nums.length)
     
     for (const num in count) {
-        if (maxCounts.includes(count[num])) {
-            result.push(num)
+        if (!maxCounts[count[num]]) maxCounts[count[num]] = []
+        maxCounts[count[num]].push(num)
+    }
+    
+    for (let i = maxCounts.length - 1; i >= 0; i--) {
+        if (result.length === k ) break;
+        if (maxCounts[i]) {
+            for (const num of maxCounts[i]) {
+                if (result.length < k) result.push(num)
+            }
         }
     }
     
