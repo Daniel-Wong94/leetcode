@@ -24,7 +24,6 @@ var floodFill = function(image, sr, sc, color) {
 
                 if (0 <= newX && newX < image.length && 0 <= newY && newY < image[x].length) {
                     visited.add(x + ' ' + y)
-                    console.log(newX, newY)
                     if (image[newX][newY] === startColor) {
                         stack.push([newX, newY])
                     }
