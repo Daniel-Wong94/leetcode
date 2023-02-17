@@ -2,7 +2,9 @@
  * @param {string[]} strs
  * @return {string[][]}
  */
-var groupAnagrams = function(strs) {
+
+// 
+const groupAnagrams = strs => {
     const tracker = {}
     
     for (const str of strs) {
@@ -15,7 +17,7 @@ var groupAnagrams = function(strs) {
     return Object.values(tracker)
 }; 
 
-// n = max length (str1, str2); Time: O(n); Space: O(n)
+// n = length of str; Time: O(n); Space: O(1)
 const getKey = str => {
     const count = Array(26).fill(0)
     
