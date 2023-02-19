@@ -7,6 +7,7 @@ var longestConsecutive = function(nums) {
     
     const visited = new Set(nums)
     const subs = {}
+    let max = -Infinity
     
     // find the start of each subsequence
     for (const num of nums) {
@@ -18,12 +19,16 @@ var longestConsecutive = function(nums) {
     // for each subsequence, lookup set for consecutives
     for (const sub in subs) {
         let consecutive = Number(sub) + 1
+        let count = 1
         
         while (visited.has(consecutive)) {
             subs[sub]++
             consecutive++
+            count++
         }
+        
+        max = Math.max(max, count)
     }
     
-    return Math.max(...Object.values(subs));
+    return max;
 };
