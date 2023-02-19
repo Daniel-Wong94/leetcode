@@ -15,9 +15,10 @@ var longestConsecutive = function(nums) {
         }
     }
         
-    // for each sub, loop through the nums and check for consecutives
+    // for each subsequence, lookup set for consecutives
     for (const sub in subs) {
         let consecutive = Number(sub) + 1
+        
         while (visited.has(consecutive)) {
             subs[sub]++
             consecutive++
