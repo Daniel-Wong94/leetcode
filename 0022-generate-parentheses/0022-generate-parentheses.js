@@ -3,6 +3,9 @@
  * @return {string[]}
  */
 var generateParenthesis = function(n) {
+    // decision tree: add open and add close
+    // prune the tree to reduce iterations
+    // global result
     const result = []
 
     const getCombos = (str="", open=0, close=0) => {
