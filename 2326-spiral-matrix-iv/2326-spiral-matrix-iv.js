@@ -31,7 +31,7 @@ var spiralMatrix = function(m, n, head) {
         if ((j === n - 1 || matrix[i][j + 1] !== - 1) && direction === "right") direction = "down"
         else if ((j === 0 || matrix[i][j - 1] !== -1)&& direction === "left") direction = "up"
         else if ((i === m - 1 || matrix[i + 1][j] !== -1) && direction === "down") direction = "left"
-        else if ((i === 0 || matrix[i - 1][j] !== -1) && direction === "left") direction = "up"
+        // else if ((i === 0 || matrix[i - 1][j] !== -1) && direction === "left") direction = "up"
         else if ((i === 0 || matrix[i - 1][j] !== -1) && direction === "up") direction = "right"
         
         if (direction === "right") j++
