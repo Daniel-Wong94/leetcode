@@ -14,7 +14,7 @@ class Solution:
         
         while current and current.next:
             previous.next = current.next
-            current.next = previous.next.next
+            current.next = current.next.next
             previous.next.next = current
             
             previous = current
