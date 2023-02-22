@@ -21,11 +21,10 @@ var removeElements = function(head, val) {
         if (current.val === val) {
             current = current.next
             previous.next = current
-            continue
-        }    
-        
-        previous = current
-        current = current.next
+        } else {
+            previous = current
+            current = current.next            
+        }
     }
     
     return dummyHead.next
