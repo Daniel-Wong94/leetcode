@@ -9,15 +9,8 @@ var checkRecord = function(s) {
     
     for (const char of s) {
         if (char === "A") totalAbsence++
-        if (char === "L") {
-            if (previous === "L") {
-                lateness++   
-                if (lateness === 3) return false
-            } else {
-                lateness = 1;
-            }
-        }
-        
+        if (char === "L") lateness = previous === "L" ? lateness + 1 : 1
+        if (lateness === 3) return false;
         previous = char;
     }
     
