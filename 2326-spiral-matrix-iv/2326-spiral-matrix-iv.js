@@ -26,7 +26,6 @@ var spiralMatrix = function(m, n, head) {
     let direction = "right"
     
     while (current) {
-        console.log(i, j)
         matrix[i][j] = current.val
         
         if ((j === n - 1 || matrix[i][j + 1] !== - 1) && direction === "right") direction = "down"
@@ -35,17 +34,10 @@ var spiralMatrix = function(m, n, head) {
         else if ((i === 0 || matrix[i - 1][j] !== -1) && direction === "left") direction = "up"
         else if ((i === 0 || matrix[i - 1][j] !== -1) && direction === "up") direction = "right"
         
-        if (i === 2 && j === 0) console.log(matrix)
-        
-        if (direction === "right") {
-            j++
-        } else if (direction === "left") {
-            j--
-        } else if (direction === "up") {
-            i--
-        } else {
-            i++
-        }
+        if (direction === "right") j++
+        else if (direction === "left") j--
+        else if (direction === "up") i--
+        else i++
         
         current = current.next
     }
