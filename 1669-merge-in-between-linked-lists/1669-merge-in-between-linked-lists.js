@@ -13,11 +13,10 @@
  * @return {ListNode}
  */
 var mergeInBetween = function(list1, a, b, list2) {
+    // find tail of the list 2 and the node before and after deletion
     let tail2 = list2
     
-    while (tail2.next) {
-        tail2 = tail2.next
-    }
+    while (tail2.next) tail2 = tail2.next
     
     let nodeAfter = list1;
     let nodeBefore;
@@ -30,6 +29,8 @@ var mergeInBetween = function(list1, a, b, list2) {
         i++
     }
     
+    // redirect nodeBefore to point to start of list 2 
+    // and tail of list2 to point to the node after
     nodeBefore.next = list2
     tail2.next = nodeAfter
     
