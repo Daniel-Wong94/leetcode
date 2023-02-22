@@ -11,7 +11,6 @@
  * @return {ListNode}
  */
 var removeElements = function(head, val) {
-    if (!head) return head
     let dummyHead = new ListNode()
     let current = head
     let previous = dummyHead
