@@ -2,6 +2,7 @@
  * @param {string} homepage
  */
 var BrowserHistory = function(homepage) {
+    // starting node
     this.page = {
         url: homepage,
         back: null,
@@ -14,13 +15,15 @@ var BrowserHistory = function(homepage) {
  * @return {void}
  */
 BrowserHistory.prototype.visit = function(url) {
-    this.page.next = {
+    // create next node like a doubly linked list
+    this.page.forward = {
         url,
         back : this.page,
         forward: null
     }
     
-    this.page = this.page.next
+    // increment node
+    this.page = this.page.forward
 };
 
 /** 
@@ -28,8 +31,9 @@ BrowserHistory.prototype.visit = function(url) {
  * @return {string}
  */
 BrowserHistory.prototype.back = function(steps) {
+    // iterate steps and move pointer
     while (steps && this.page.back) {
-        this.page = { ...this.page.back, forward: {...this.page} }
+        this.page = this.page.back
         steps--
     }
     
@@ -42,12 +46,14 @@ BrowserHistory.prototype.back = function(steps) {
  */
 BrowserHistory.prototype.forward = function(steps) {
     while (steps && this.page.forward) {
-        this.page = { ...this.page.forward, back: {...this.page} }
+        this.page = this.page.forward
         steps--
     }
     
     return this.page.url
 };
+
+
 
 /** 
  * Your BrowserHistory object will be instantiated and called as such:
