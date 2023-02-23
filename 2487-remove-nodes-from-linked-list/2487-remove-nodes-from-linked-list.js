@@ -10,8 +10,8 @@
  * @return {ListNode}
  */
 var removeNodes = function(head) {
-    const stack = [] // 5-2-13-3-8 top
-    
+    // create a stack of the nodes (reversed)
+    const stack = [] 
     let curr = head
     
     while (curr) {
@@ -20,7 +20,7 @@ var removeNodes = function(head) {
     }
 
     let prev = null; 
-    
+    // pop off the stack and reroute nodes
     while (stack.length) {
         let curr = stack.pop()
         
