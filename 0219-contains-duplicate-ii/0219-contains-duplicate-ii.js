@@ -4,16 +4,16 @@
  * @return {boolean}
  */
 var containsNearbyDuplicate = function(nums, k) {
-    const tracker = {}
+    const lastIndexOf = {}
     
     for (let i = 0; i < nums.length; i++) {
         let num = nums[i]  
-        if (tracker.hasOwnProperty(num) && Math.abs(i - tracker[num]) <= k) {
+        
+        if (lastIndexOf.hasOwnProperty(num) && Math.abs(i - lastIndexOf[num]) <= k) {
             return true
         }
             
-        tracker[num] = i
-        
+        lastIndexOf[num] = i
     }
         
     return false
