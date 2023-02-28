@@ -12,19 +12,17 @@
  */
 var removeNthFromEnd = function(head, n) {
     let dummy = new ListNode()
-    let curr = removeAt = dummy
-    removeAt.next = head
+    let behind = curr = dummy
+    behind.next = head
     let index = 0
     
     while (curr) {
-        if (index > n) {
-            removeAt = removeAt.next
-        }
+        if (index > n) behind = behind.next
         curr = curr.next
         index++
     }
 
-    removeAt.next = removeAt.next.next
+    behind.next = behind.next.next
     
     return dummy.next;
 };
