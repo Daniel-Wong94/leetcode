@@ -32,7 +32,6 @@ var removeNthFromEnd = function(head, n) {
         removeAt--
     }
     
-    if (!prev.next) return null
     prev.next = curr.next
     
     return head;
