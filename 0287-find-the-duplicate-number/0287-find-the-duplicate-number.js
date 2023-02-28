@@ -8,6 +8,7 @@ var findDuplicate = function(nums) {
     
     while (count < nums.length) {
         [nums[index], index] = [index, nums[index]]
+        
         if (nums[index] === index) return index;
         
         count++
