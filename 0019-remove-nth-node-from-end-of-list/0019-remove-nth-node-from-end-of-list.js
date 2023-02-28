@@ -11,28 +11,20 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
-    const nodes = []
+    let dummy = new ListNode()
+    let curr = removeAt = dummy
+    removeAt.next = head
+    let index = 0
     
-    let curr = head
     while (curr) {
-        nodes.push(curr)
+        if (index > n) {
+            removeAt = removeAt.next
+        }
         curr = curr.next
+        index++
     }
-    
-    let removeAt = nodes.length - n
-    let prev = head
-    curr = head
-    
-    if (removeAt === 0) return head.next
-    
-    while (removeAt) {
-        prev = curr
-        curr = curr.next
 
-        removeAt--
-    }
+    removeAt.next = removeAt.next.next
     
-    prev.next = curr.next
-    
-    return head;
+    return dummy.next;
 };
