@@ -10,13 +10,10 @@ var plusOne = function(digits) {
         const sum = digits[i] + carry
         carry = Math.floor(sum / 10)
         digits[i] = sum > 9 ? sum % 10 : sum
-        
         i--
     }
     
-    if (carry > 0) {
-        digits.unshift(carry)
-    }
+    if (carry > 0) digits.unshift(carry)
     
     return digits
 };
