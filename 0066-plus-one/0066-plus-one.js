@@ -9,12 +9,7 @@ var plusOne = function(digits) {
     while (carry > 0 && i >= 0) {
         const sum = digits[i] + carry
         carry = Math.floor(sum / 10)
-        
-        if (sum > 9) {
-            digits[i] = sum % 10
-        } else {
-            digits[i] = sum
-        }
+        digits[i] = sum > 9 ? sum % 10 : sum
         
         i--
     }
