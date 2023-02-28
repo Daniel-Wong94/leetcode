@@ -21,7 +21,7 @@ var reorderList = function(head) {
     let left = 0
     let right = nodes.length - 1
     
-    while (Math.abs(left - right) > 1) {
+    while (right - left > 1) {
         nodes[right].next = nodes[left].next
         nodes[left].next = nodes[right]
         
