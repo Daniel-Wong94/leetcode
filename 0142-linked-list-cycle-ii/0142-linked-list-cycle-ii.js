@@ -26,6 +26,7 @@
 // };
 
 var detectCycle = head => {
+    // check if there's a cycle
     let slow = fast = head
     
     while (fast && fast.next) {
@@ -35,8 +36,11 @@ var detectCycle = head => {
         if (slow === fast) break;
     }
     
+    // when exiting the loop, you either have cycle or no cycle
     if (!fast || !fast.next) return null
     
+    // if there is still cycle, the distance from slow coming around the corner of the cycle 
+    // is the same as the distance from head to the start of the cycle
     while (slow !== head) {
         slow = slow.next
         head = head.next
