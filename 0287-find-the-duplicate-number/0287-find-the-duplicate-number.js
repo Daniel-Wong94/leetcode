@@ -7,10 +7,7 @@ var findDuplicate = function(nums) {
     let index = nums[0]
     
     while (count < nums.length) {
-        // swap
-        let temp = nums[index]
-        nums[index] = index
-        index = temp
+        [nums[index], index] = [index, nums[index]]
         if (nums[index] === index) return index;
         
         count++
