@@ -11,18 +11,26 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
+    // create a dummy node in case you're removing first node
     let dummy = new ListNode()
     let behind = curr = dummy
-    behind.next = head
-    let index = 0
     
+    // connect dummy to head
+    behind.next = head
+    
+    // advance curr while keeping track of distance between behind and curr pointers
+    let distance = 0
     while (curr) {
-        if (index > n) behind = behind.next
+        // once distance is met, start advancing behind pointer
+        if (distance > n) behind = behind.next
+        
         curr = curr.next
-        index++
+        distance++
     }
 
+    // behind pointer should be the node behind the node you want to remove
     behind.next = behind.next.next
     
+    // if removing the head, behind would be at dummy and dummy.next will be the node after head
     return dummy.next;
 };
