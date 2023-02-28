@@ -21,23 +21,15 @@ var reorderList = function(head) {
     let left = 0
     let right = nodes.length - 1
     
-    while (left < right) {
-        const dist = Math.abs(left - right)
-        if (dist > 2) {
-            nodes[right].next = nodes[left].next
-            nodes[left].next = nodes[right]
-        } else if (dist === 2) {
-            nodes[right].next = nodes[left].next
-            nodes[left].next = nodes[right]
-            nodes[right].next.next = null
-        } else {
-            nodes[right].next = null
-            nodes[left].next = nodes[right]
-        }
+    while (Math.abs(left - right) > 1) {
+        nodes[right].next = nodes[left].next
+        nodes[left].next = nodes[right]
         
         left++
         right--
     }
+    
+    nodes[right].next = null
     
     return head
 };
