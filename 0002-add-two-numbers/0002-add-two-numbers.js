@@ -28,12 +28,7 @@ var addTwoNumbers = function(l1, l2) {
         if (l2) l2 = l2.next
     }
     
-    const lastNode = new ListNode()
-    
-    if (carry > 0) {
-        lastNode.val = carry
-        curr.next = lastNode
-    }
+    if (carry > 0) curr.next = new ListNode(carry)
     
     return dummy.next
 };
