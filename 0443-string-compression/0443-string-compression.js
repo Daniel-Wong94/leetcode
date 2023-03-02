@@ -12,19 +12,15 @@ var compress = function(chars) {
             count++
             right++
         } else {
-            chars[left] = current
+            chars[left++] = current
             if (count > 1) {
-                // chars[left + 1] = String(count)
-                // left += 2
                 const digits = String(count).split("")
                 
                 for (let i = 0; i < digits.length; i++) {
-                    chars[left + 1 + i] = digits[i]
+                    chars[left + i] = digits[i]
                 }
                 
-                left += digits.length + 1
-            } else {
-                left++
+                left += digits.length
             }
             
             count = 0
