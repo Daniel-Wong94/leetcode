@@ -15,12 +15,14 @@ var compress = function(chars) {
             chars[left++] = current
             if (count > 1) {
                 const digits = String(count).split("")
-                
-                for (let i = 0; i < digits.length; i++) {
-                    chars[left + i] = digits[i]
+                for (const digit of digits) {
+                    chars[left++] = digit
                 }
+//                 for (let i = 0; i < digits.length; i++) {
+//                     chars[left + i] = digits[i]
+//                 }
                 
-                left += digits.length
+//                 left += digits.length
             }
             
             count = 0
