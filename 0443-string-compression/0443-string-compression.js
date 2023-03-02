@@ -24,20 +24,14 @@ var compress = function(chars) {
             current = chars[right]
         } 
     }
-    
-    console.log(chars, count)
-        
+            
     chars[left++] = current
     
     if (count > 1) {
-        // chars[left] = current
-        const digits = String(count).split("")
-        
+        const digits = String(count).split("")  
         for (const digit of digits) {
             chars[left++] = digit
         }
-        
-        return left 
     }
     
     return left
