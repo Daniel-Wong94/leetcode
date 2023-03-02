@@ -18,32 +18,27 @@ var compress = function(chars) {
                 for (const digit of digits) {
                     chars[left++] = digit
                 }
-//                 for (let i = 0; i < digits.length; i++) {
-//                     chars[left + i] = digits[i]
-//                 }
-                
-//                 left += digits.length
             }
             
             count = 0
             current = chars[right]
         } 
     }
+    
+    console.log(chars, count)
         
-    if (count === 1) {
-        chars[left] = current
-        return left + 1
-    }
+    chars[left++] = current
+    
     if (count > 1) {
-        chars[left] = current
+        // chars[left] = current
         const digits = String(count).split("")
         
-        for (let i = 0; i < digits.length; i++) {
-            chars[left + 1 + i] = digits[i]
+        for (const digit of digits) {
+            chars[left++] = digit
         }
         
-        return left + digits.length + 1
+        return left 
     }
     
-    return left + 1
+    return left
 };
