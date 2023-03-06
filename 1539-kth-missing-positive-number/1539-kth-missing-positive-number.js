@@ -24,11 +24,14 @@
 // }
 
 const findKthPositive = (arr, k) => {
+    // binary search, the indicator will be the number of missing elements at index mid
     let left = 0
     let right = arr.length - 1
     
     while (left <= right) {
-        let mid = Math.floor(left + ((right - left) / 2))
+        let mid = Math.floor((left + right) / 2)
+        
+        // formula to get number of missing elements
         let numOfMissing = arr[mid] - (mid + 1)
         
         if (numOfMissing < k) {
