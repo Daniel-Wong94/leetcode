@@ -32,14 +32,20 @@ const findKthPositive = (arr, k) => {
         let mid = Math.floor((left + right) / 2)
         
         // formula to get number of missing elements
+        // numOfMissing = actual - expected (1 indexed, so add 1)
         let numOfMissing = arr[mid] - (mid + 1)
-        
+
         if (numOfMissing < k) {
             left = mid + 1
         } else {
             right = mid - 1
         }
     }
-    
+
+    // actual - expected => arr[left] - left + 1 OR arr[left] - left - 1 = numOfMissing
+    // how many steps backwards to get to kth value? numOfMissing - k + 1
+    // arr[left] - left - 1 - (k + 1) => arr[left] - left - (k) => arr[left] - left - k 
+    // how many do we get the actual number? arr[left] - numOfSteps backwards (arr[left] - left - k)
+    // arr[left] - (arr[left] - left - k) => arr[left] - arr[left] + left + k => left + k
     return left + k
 }
