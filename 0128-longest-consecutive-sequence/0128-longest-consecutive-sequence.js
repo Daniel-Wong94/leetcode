@@ -22,7 +22,7 @@ var longestConsecutive = function(nums) {
         let count = 1
         
         while (visited.has(consecutive)) {
-            subs[sub]++
+            // subs[sub]++
             consecutive++
             count++
         }
