@@ -3,26 +3,16 @@
  * @return {string[]}
  */
 const invalidTransactions = transactions => {
-    const invalid = []
     const history = {}
     
     for (const transaction of transactions) {
         const [name, time, amount, city] = transaction.split(",")
         
-        if (history.hasOwnProperty(name)) {
-            history[name].push({city, time})
-        } else {
-            history[name] = [{city, time}]
-        }
+        if (name in history) history[name].push({time, city})
+        else history[name] = [{time, city}]
     }
     
-    for (const transaction of transactions) {
-        const [name, time, amount, city] = transaction.split(",")
-        
-        if (isInvalid(transaction, history)) invalid.push(transaction)
-    }
-    
-    return invalid;
+    return transactions.filter(t => isInvalid(t, history))
 }
 
 const isInvalid = (transaction, history) => {
