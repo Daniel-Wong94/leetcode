@@ -1,37 +1,50 @@
-class RandomizedSet {
-    constructor() {
-        this.map = {}
-        this.list = []
-    }
+
+var RandomizedSet = function() {
+    this.map = {} // val : index 
+    this.nums = []  // keeps track of index
+};
+
+/** 
+ * @param {number} val
+ * @return {boolean}
+ */
+RandomizedSet.prototype.insert = function(val) {
+    if (this.map.hasOwnProperty(val)) return false
     
-    insert(val) {
-        if (this.map.hasOwnProperty(val)) return false
-        
-        this.map[val] = this.list.length
-        this.list.push(val)
-        return true;
-    }
+    this.map[val] = this.nums.length
+    this.nums.push(val)
     
-    remove(val) {
-        if (!this.map.hasOwnProperty(val)) return false;
-        
-        // move last element to the place idx of the element to delete
-        const lastEl = this.list[this.list.length - 1]
-        const idx = this.map[val]
-        this.list[idx] = lastEl
-        this.map[lastEl] = idx
-        
-        // delete last element
-        this.list.pop()
-        delete this.map[val]
-        return true;
-    }
+    return true
+};
+
+/** 
+ * @param {number} val
+ * @return {boolean}
+ */
+RandomizedSet.prototype.remove = function(val) {
+    if (!this.map.hasOwnProperty(val)) return false
     
-    getRandom() {
-        const randomIdx = Math.floor(Math.random() * this.list.length)
-        return this.list[randomIdx]
-    }
-}
+    // use map to access index of removal at O(1)
+    const lastIdx = this.nums.length - 1
+    const removeIdx = this.map[val]
+    
+    // swap the values at removeIdx and lastIdx
+    this.nums[removeIdx] = this.nums[lastIdx]
+    this.map[this.nums[lastIdx]] = removeIdx
+    
+    this.nums.pop()
+    delete this.map[val]
+    
+    return true
+};
+
+/**
+ * @return {number}
+ */
+RandomizedSet.prototype.getRandom = function() {
+    const randomIdx = Math.floor(Math.random() * this.nums.length)
+    return this.nums[randomIdx]
+};
 
 /** 
  * Your RandomizedSet object will be instantiated and called as such:
