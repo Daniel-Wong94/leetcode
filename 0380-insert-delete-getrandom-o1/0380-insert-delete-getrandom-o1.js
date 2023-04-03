@@ -28,10 +28,13 @@ RandomizedSet.prototype.remove = function(val) {
     const lastIdx = this.nums.length - 1
     const removeIdx = this.map[val]
     
-    // swap the values at removeIdx and lastIdx
+    // remove the value by replacing it with the last element
     this.nums[removeIdx] = this.nums[lastIdx]
+    
+    // update map - last element in array has new position at removeIdx
     this.map[this.nums[lastIdx]] = removeIdx
     
+    // remove the last element from nums, and delete from map
     this.nums.pop()
     delete this.map[val]
     
