@@ -12,10 +12,13 @@ var OrderedStream = function(n) {
  * @return {string[]}
  */
 OrderedStream.prototype.insert = function(idKey, value) {
+    // update the stream
     this.stream[idKey - 1] = value
     
+    // build the chunk
     const chunk = []
 
+    // advance pointer and build chunk until undefined value is reached
     while (this.stream[this.pointer]) {
         chunk.push(this.stream[this.pointer])
         this.pointer++
