@@ -3,9 +3,13 @@
  * @return {number}
  */
 var twoCitySchedCost = function(costs) {
-    // sort the costs by the price diff of cityA (cost[i][0]) - cityB (cost[i][1]) 
-    // ascending order of the price diff if we keep sending to cityA
-    // cheapest difference to send to cityA -> most expensive difference to send to cityA
+    /*  
+        sort the costs by the price diff of cityA (cost[i][0]) - cityB (cost[i][1]) 
+        ascending order of the price diff if we keep sending to cityA
+        cheapest difference to send to cityA -> most expensive difference to send to cityA
+        minimize cost by sending half to cityA and the rest to cityB
+    */
+    
     costs.sort((a, b) => (a[0] - a[1]) - (b[0] - b[1]))
     
     // send half of the people to the first half of costs and rest to other half
