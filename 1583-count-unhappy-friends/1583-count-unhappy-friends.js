@@ -4,14 +4,16 @@
  * @param {number[][]} pairs
  * @return {number}
  */
-var unhappyFriends = function(n, preferences, pairs) {
-    const ranks = makeRank(n, preferences, pairs)
+const unhappyFriends = (n, preferences, pairs) => {
+    // map out the preferences of each person greater than their partner
+    const betterPartners = getBetterPartners(n, preferences, pairs)
     
     let unhappy = 0
     
-    for (let i = 0; i < n; i++) {
-        for (const pref of ranks[i]) {
-            if (ranks[pref].includes(i)) {
+    // if a greater preference is found in each of two friends, they are unhappy
+    for (let person = 0; person < n; person++) {
+        for (const betterPartner of betterPartners[person]) {
+            if (betterPartners[betterPartner].includes(person)) {
                 unhappy++
                 break;
             }
@@ -21,13 +23,13 @@ var unhappyFriends = function(n, preferences, pairs) {
     return unhappy;
 };
 
-const makeRank = (n, preferences, pairs) => {
-    const prefersMore = {}
+const getBetterPartners = (n, preferences, pairs) => {
+    const betterPartners = {}
 
     for (const [a, b] of pairs) {
-        prefersMore[a] = preferences[a].slice(0, preferences[a].indexOf(b))
-        prefersMore[b] = preferences[b].slice(0, preferences[b].indexOf(a))    
+        betterPartners[a] = preferences[a].slice(0, preferences[a].indexOf(b))
+        betterPartners[b] = preferences[b].slice(0, preferences[b].indexOf(a))    
     }
     
-    return prefersMore
+    return betterPartners
 }
