@@ -26,6 +26,7 @@ const unhappyFriends = (n, preferences, pairs) => {
 const getBetterPartners = (n, preferences, pairs) => {
     const betterPartners = {}
 
+    // slice up to the index of the partner
     for (const [a, b] of pairs) {
         betterPartners[a] = preferences[a].slice(0, preferences[a].indexOf(b))
         betterPartners[b] = preferences[b].slice(0, preferences[b].indexOf(a))    
