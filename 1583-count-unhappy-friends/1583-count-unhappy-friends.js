@@ -6,7 +6,6 @@
  */
 var unhappyFriends = function(n, preferences, pairs) {
     const ranks = makeRank(n, preferences, pairs)
-    console.log(ranks)
     
     let unhappy = 0
     
@@ -32,17 +31,3 @@ const makeRank = (n, preferences, pairs) => {
     
     return prefersMore
 }
-
-// const unhappyFriends = (n, preferences, pairs) => {
-//     let unhappy = 0
-    
-//     for (const [a, b] of pairs) {
-//         const aPref = preferences[a][0]
-//         const bPref = preferences[b][0]
-//         console.log(a, b, aPref, bPref, preferences[aPref])
-//         if (aPref !== b && preferences[aPref][0] === a) unhappy++
-//         if (bPref !== a && preferences[bPref][0] === b) unhappy++
-//     }
-    
-//     return unhappy
-// }
