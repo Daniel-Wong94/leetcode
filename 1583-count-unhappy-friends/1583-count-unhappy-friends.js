@@ -13,6 +13,7 @@ const unhappyFriends = (n, preferences, pairs) => {
     // if a greater preference is found in each of two friends, they are unhappy
     for (let person = 0; person < n; person++) {
         for (const betterPartner of betterPartners[person]) {
+            // must break to prevent duplicate when reaching the other side of the unhappy partnership
             if (betterPartners[betterPartner].includes(person)) {
                 unhappy++
                 break;
