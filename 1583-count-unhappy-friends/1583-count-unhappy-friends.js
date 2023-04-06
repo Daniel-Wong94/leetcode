@@ -1,0 +1,48 @@
+/**
+ * @param {number} n
+ * @param {number[][]} preferences
+ * @param {number[][]} pairs
+ * @return {number}
+ */
+var unhappyFriends = function(n, preferences, pairs) {
+    const ranks = makeRank(n, preferences, pairs)
+    console.log(ranks)
+    
+    let unhappy = 0
+    
+    for (let i = 0; i < n; i++) {
+        for (const pref of ranks[i]) {
+            if (ranks[pref].includes(i)) {
+                unhappy++
+                break;
+            }
+        }
+    }
+    
+    return unhappy;
+};
+
+const makeRank = (n, preferences, pairs) => {
+    const prefersMore = {}
+
+    for (const [a, b] of pairs) {
+        prefersMore[a] = preferences[a].slice(0, preferences[a].indexOf(b))
+        prefersMore[b] = preferences[b].slice(0, preferences[b].indexOf(a))    
+    }
+    
+    return prefersMore
+}
+
+// const unhappyFriends = (n, preferences, pairs) => {
+//     let unhappy = 0
+    
+//     for (const [a, b] of pairs) {
+//         const aPref = preferences[a][0]
+//         const bPref = preferences[b][0]
+//         console.log(a, b, aPref, bPref, preferences[aPref])
+//         if (aPref !== b && preferences[aPref][0] === a) unhappy++
+//         if (bPref !== a && preferences[bPref][0] === b) unhappy++
+//     }
+    
+//     return unhappy
+// }
