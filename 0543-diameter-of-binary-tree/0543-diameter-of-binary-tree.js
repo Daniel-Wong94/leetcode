@@ -15,13 +15,16 @@ var diameterOfBinaryTree = function(root) {
     
     const longest = (root) => {
         if (!root) return 0;
-
-        const leftPath = longest(root.left)
-        const rightPath = longest(root.right)
+    
+        // recurse to get longest left and right path
+        const maxLeftPath = longest(root.left)
+        const maxRightPath = longest(root.right)
         
-        diameter = Math.max(diameter, leftPath + rightPath)
+        // update the longest diameter at each node
+        diameter = Math.max(diameter, maxLeftPath + maxRightPath)
 
-        return 1 + Math.max(leftPath, rightPath) 
+        // returns the longest side plus the current node
+        return 1 + Math.max(maxLeftPath, maxRightPath) 
     }
     
     longest(root)
