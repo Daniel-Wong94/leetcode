@@ -10,12 +10,10 @@ var isLongPressedName = function(name, typed) {
         if (name[namePointer] === typed[typedPointer]) {
             namePointer++
             typedPointer++
+        } else if (name[namePointer - 1] === typed[typedPointer]){
+            typedPointer++
         } else {
-            if (name[namePointer - 1] === typed[typedPointer]) {
-                typedPointer++
-            } else {
-                return false
-            }
+            return false
         }
     }
     
