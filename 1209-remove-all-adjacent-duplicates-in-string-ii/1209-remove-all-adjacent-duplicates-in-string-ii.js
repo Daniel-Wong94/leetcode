@@ -5,27 +5,22 @@
  */
 var removeDuplicates = function(s, k) {
     let stack = []
-    let prev = ""
-    let result = ""
     
-    for (let i = 0; i < s.length; i++) {
-        const c = s[i]
-        
-        if (c === prev) {
-            stack[stack.length - 1]++
+    for (const c of s){
+        if (stack.length && stack[stack.length - 1][0] === c) {
+            stack[stack.length - 1][1]++
         } else {
-            stack.push(1)            
+            stack.push([c, 1])
         }
         
-        result += c
-        
-        if (stack[stack.length - 1] === k) {
+        if (stack[stack.length - 1][1] === k) {
             stack.pop()
-            result = result.substring(0, result.length - k)
         }
-        
-        prev = result[result.length - 1]
     }
     
-    return result
+    let result = ""
+    
+    stack.forEach(([char, num]) => result += char.repeat(num))
+    
+    return result;
 };
