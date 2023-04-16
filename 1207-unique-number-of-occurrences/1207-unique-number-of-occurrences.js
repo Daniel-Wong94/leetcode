@@ -9,7 +9,7 @@ var uniqueOccurrences = function(arr) {
         counter[num] = counter[num] + 1 || 1
     }
     
-    const counts = new Set(Object.values(counter))
+    const counts = Object.values(counter)
     
-    return counts.size === Object.values(counter).length
+    return new Set(counts).size === counts.length
 };
