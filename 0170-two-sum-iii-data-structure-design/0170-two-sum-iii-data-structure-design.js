@@ -17,10 +17,10 @@ TwoSum.prototype.add = function(number) {
  */
 TwoSum.prototype.find = function(value) {
     for (const num in this.nums) {
-        const target = value - num
-        if (target != num) {
-            if (this.nums.hasOwnProperty(target)) return true
-        } else if (this.nums[target] > 1) return true
+        const target = String(value - num)
+        if (target !== num && this.nums.hasOwnProperty(target) || this.nums[target] > 1) {
+            return true
+        }
     }
     
     return false;
