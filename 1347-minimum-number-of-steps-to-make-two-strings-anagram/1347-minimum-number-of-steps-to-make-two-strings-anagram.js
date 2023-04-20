@@ -13,11 +13,10 @@ var minSteps = function(s, t) {
     
     // deduct with t's chars
     for (const c of t) {
-        if (c in count) count[c]--
+        count[c]--
     }
     
-    // add up the diff (abs) and divide by 2 
-    //  since changing one char balances the two strings
+    // add up the positive diffs (the neg and pos vals will cancel out) 
     let diff = 0
     
     for (const char in count) {
