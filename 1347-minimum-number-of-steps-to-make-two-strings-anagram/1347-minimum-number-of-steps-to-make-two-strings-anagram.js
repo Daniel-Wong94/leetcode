@@ -16,10 +16,13 @@ var minSteps = function(s, t) {
         c in count ? count[c]-- : count[c] = -1
     }
     
-    // add up the diff (abs) and divide by 2
+    // add up the diff (abs) and divide by 2 
+    //  since changing one char balances the two strings
     let diff = 0
     
-    Object.values(count).forEach(num => diff += Math.abs(num))
+    for (const char in count) {
+        diff += Math.abs(count[char])
+    }
     
     return diff / 2
 };
