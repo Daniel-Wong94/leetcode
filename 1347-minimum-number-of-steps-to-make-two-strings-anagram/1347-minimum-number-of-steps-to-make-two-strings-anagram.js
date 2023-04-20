@@ -13,7 +13,7 @@ var minSteps = function(s, t) {
     
     // deduct with t's chars
     for (const c of t) {
-        c in count ? count[c]-- : count[c] = -1
+        if (c in count) count[c]--
     }
     
     // add up the diff (abs) and divide by 2 
@@ -21,8 +21,8 @@ var minSteps = function(s, t) {
     let diff = 0
     
     for (const char in count) {
-        diff += Math.abs(count[char])
+        if (count[char] > 0) diff += count[char]
     }
     
-    return diff / 2
+    return diff
 };
