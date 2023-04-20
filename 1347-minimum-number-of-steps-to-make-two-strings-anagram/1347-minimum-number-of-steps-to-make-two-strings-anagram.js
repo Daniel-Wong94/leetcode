@@ -4,22 +4,22 @@
  * @return {number}
  */
 var minSteps = function(s, t) {
+    // find the frequency of s' chars
     const count = {}
     
     for (const c of s) {
         count[c] = count[c] + 1 || 1
     }
     
+    // deduct with t's chars
     for (const c of t) {
-        if (c in count) {
-            count[c]--
-        } else {
-            count[c] = -1
-        }
+        c in count ? count[c]-- : count[c] = -1
     }
     
     // add up the diff (abs) and divide by 2
-    let diff = Object.values(count).reduce((a, b) => Math.abs(a) + Math.abs(b))
+    let diff = 0
+    
+    Object.values(count).forEach(num => diff += Math.abs(num))
     
     return diff / 2
 };
