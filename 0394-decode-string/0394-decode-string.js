@@ -20,7 +20,7 @@ var decodeString = function(s) {
             let times = 0
             let base = 1;
             
-            while (stack.length && !isNaN(stack[stack.length - 1])) {
+            while (!isNaN(stack[stack.length - 1])) {
                 times = times + stack.pop() * base
                 base *= 10
             }
