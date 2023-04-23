@@ -3,14 +3,15 @@
  * @return {number}
  */
 var maxDepth = function(s) {
-    const stack = []
-    let maxNest = -Infinity
+    // s is guaranteed to be a valid VPS
+    let current = 0
+    let maxNest = 0
     
     for (const c of s) {
-        if (c === "(") stack.push(c)
-        if (c === ")") stack.pop()
+        if (c === "(") current++
+        if (c === ")") current--
         
-        maxNest = Math.max(maxNest, stack.length)
+        maxNest = Math.max(maxNest, current)
     }
     
     return maxNest;
