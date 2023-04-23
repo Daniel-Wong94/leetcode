@@ -4,22 +4,23 @@
  * @return {boolean}
  */
 var isIsomorphic = function(s, t) {
-    if (s.length !== t.length) return false;
-    
-    const countS = []
-    const countT = []
-    
-    for (const c of s) {
-        countS.push(s.indexOf(c))
-    }
-    
-    for (const c of t) {
-        countT.push(t.indexOf(c))
-    }
+    // isomorphic: frequency of chars are in the same index
+    const sMap = {}
+    const tMap = {}
     
     for (let i = 0; i < s.length; i++) {
-        if (countS[i] !== countT[i]) return false
+        if (!sMap.hasOwnProperty(s[i])) sMap[s[i]] = t[i]
+        else {
+            if (sMap[s[i]] !== t[i]) return false
+        }
+        
+        if (!tMap.hasOwnProperty(t[i])) tMap[t[i]] = s[i]
+
     }
-    
+    console.log(sMap, tMap)
+    for (const char in sMap) {
+        if (char !== tMap[sMap[char]]) return false
+    }
+
     return true
 };
