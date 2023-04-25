@@ -11,17 +11,18 @@ var findTheWinner = function(n, k) {
         circle.push(i)
     }
     
+    // pointer for elimination
     let current = 0
     
     while (circle.length > 1) {
+        // loser idx
         const loser = (current + k - 1) % circle.length
         
-        console.log("loser", circle[loser])
-        
+        // remove loser
         circle.splice(loser, 1)
-        console.log("circle", circle)
+
+        // update elimination pointer
         current =  (loser) % circle.length
-        console.log("current", current)
     }
     
     return circle[0]
