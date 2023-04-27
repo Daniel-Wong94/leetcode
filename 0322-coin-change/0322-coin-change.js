@@ -6,8 +6,7 @@
 var coinChange = function(coins, amount) {
     let numCoins = _coinChange(coins, amount)
     
-    if (numCoins === Infinity) return -1
-    else return numCoins
+    return numCoins === Infinity ? -1 : numCoins
 };
 
 
