@@ -11,6 +11,7 @@ const minimumTotalDistance = (robots, factorys) => {
     return _minimumTotalDistance(robots, factorys)
 }
 
+// fixedRobots is the number of robots fixed by a factory
 const _minimumTotalDistance = (robots, factorys, robot = 0, factory = 0, fixedRobots = 0, memo = {}) => {
     const key = robot + "," + factory + "," + fixedRobots
     if (key in memo) return memo[key]
@@ -22,6 +23,7 @@ const _minimumTotalDistance = (robots, factorys, robot = 0, factory = 0, fixedRo
     // decisions: fix with next factory OR fix with current factory
     const nextFactory = _minimumTotalDistance(robots, factorys, robot, factory + 1, 0, memo)
     
+    // if current factory's limit is reached, set to Infinity so that min does not take it
     let currFactory = Infinity;
     
     // check if current factory's limit is not reached yet
