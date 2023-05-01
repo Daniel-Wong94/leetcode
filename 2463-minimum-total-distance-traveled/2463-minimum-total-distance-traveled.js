@@ -4,13 +4,11 @@
  * @return {number}
  */
 const minimumTotalDistance = (robots, factorys) => {
-    // robots and factory by position
+    // sort robots and factory by position
     robots.sort((a, b) => a - b)
     factorys.sort((a, b) => a[0] - b[0])
     
-    const result = _minimumTotalDistance(robots, factorys)
-    
-    return result
+    return _minimumTotalDistance(robots, factorys)
 }
 
 const _minimumTotalDistance = (robots, factorys, robot = 0, factory = 0, fixedRobots = 0, memo = {}) => {
@@ -32,6 +30,7 @@ const _minimumTotalDistance = (robots, factorys, robot = 0, factory = 0, fixedRo
         currFactory = currDistance + _minimumTotalDistance(robots, factorys, robot + 1, factory, fixedRobots + 1, memo)
     }
     
+    // store the min of the two decisions
     memo[key] = Math.min(nextFactory, currFactory)
     return memo[key]
 }
