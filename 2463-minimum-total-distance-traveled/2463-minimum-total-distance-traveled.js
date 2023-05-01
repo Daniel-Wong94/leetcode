@@ -21,11 +21,14 @@ const _minimumTotalDistance = (robots, factorys, robot = 0, factory = 0, fixedRo
     if (robot === robots.length) return 0
     if (factory === factorys.length) return Infinity
     
+    // decisions: fix with next factory OR fix with current factory
     const nextFactory = _minimumTotalDistance(robots, factorys, robot, factory + 1, 0, memo)
-    const currDistance = Math.abs(robots[robot] - factorys[factory][0])
+    
     let currFactory = Infinity;
     
-    if (factorys[factory][1] > fixedRobots) {
+    // check if current factory's limit is not reached yet
+    if (factorys[factory][1] > fixedRobots) {    
+        const currDistance = Math.abs(robots[robot] - factorys[factory][0])
         currFactory = currDistance + _minimumTotalDistance(robots, factorys, robot + 1, factory, fixedRobots + 1, memo)
     }
     
