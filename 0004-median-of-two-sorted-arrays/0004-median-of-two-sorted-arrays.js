@@ -28,14 +28,17 @@ var findMedianSortedArrays = function(nums1, nums2) {
         const minRight1 = partition1 + 1 < len1 ? nums1[partition1 + 1] : Infinity
         const minRight2 = partition2 + 1 < len2 ? nums2[partition2 + 1] : Infinity
         
+        // if we found the correct partitions, return depends on even/odd total length
         if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1) {
             if (total % 2 !== 0) {
                 return Math.min(minRight1, minRight2)
             } else {
                 return (Math.max(maxLeft1, maxLeft2) + Math.min(minRight1, minRight2)) / 2
             }
+        // we have too many elements on the left side
         } else if (maxLeft1 > minRight2) {
             hi = partition1 - 1
+        // we have too many elements on the right side
         } else {
             low = partition1 + 1
         }
