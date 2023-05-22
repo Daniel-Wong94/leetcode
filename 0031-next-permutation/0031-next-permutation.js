@@ -33,6 +33,7 @@ var nextPermutation = function(nums) {
         }
         
     } else {
+        // if it's already in descending order, then it's the largest number possible
         nums.reverse()
     }
 
