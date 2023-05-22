@@ -4,8 +4,8 @@
  * @return {number}
  */
 var maximumUnits = function(boxTypes, truckSize) {
+    // sort 
     boxTypes.sort((a, b) => b[1] - a[1])
-    console.log(boxTypes)
     
     let count = 0
     
