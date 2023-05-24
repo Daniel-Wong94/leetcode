@@ -22,8 +22,7 @@ var countShips = function(sea, topRight, bottomLeft) {
     // when the topRight and bottomLeft coordinates are the same, then we've pinpointed a ship
     // if there are no ships found in a quadrant, do not recurse further
     
-    // base case: points cross or no ships
-    // if (bottomLeft[0] > topRight[0] || bottomLeft[1] > topRight[1]) return 0
+    // base case: no ships, then no need for further recursive search
     if (!sea.hasShips(topRight, bottomLeft)) return 0
     
     // base case: points overlap, we found a ship
