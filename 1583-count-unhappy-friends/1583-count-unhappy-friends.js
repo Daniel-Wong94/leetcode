@@ -6,7 +6,7 @@
  */
 const unhappyFriends = (n, preferences, pairs) => {
     // map out the preferences of each person greater than their partner
-    const betterPartners = getBetterPartners(n, preferences, pairs)
+    const betterPartners = getBetterPartners(preferences, pairs)
     
     let unhappy = 0
     
@@ -24,7 +24,7 @@ const unhappyFriends = (n, preferences, pairs) => {
     return unhappy;
 };
 
-const getBetterPartners = (n, preferences, pairs) => {
+const getBetterPartners = (preferences, pairs) => {
     const betterPartners = {}
 
     // slice up to the index of the partner
