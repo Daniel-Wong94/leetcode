@@ -25,6 +25,7 @@ const reachingPoints = (sx, sy, tx, ty) => {
     // start from target and modulo your way up to source
     
     while (tx >= sx && ty >= sy) {
+        // edge case: if tx === ty then we don't know which method was used before it
         if (tx === ty) break;
         
         // if tx is greater than ty, then we know we have to take away from tx
