@@ -27,6 +27,11 @@ const reachingPoints = (sx, sy, tx, ty) => {
     while (tx >= sx && ty >= sy) {
         if (tx === ty) break;
         
+        // if tx is greater than ty, then we know we have to take away from tx
+        // since the parent node must've used x + y , y
+        // the nested if statements cover for when neither tx nor ty have reached source
+        // the nested else statements cover for when either the x or y have already met source
+        // once one of them has met the source, you can just isolate the other and modulo the difference to see if it's reachable
         if (tx > ty) {
             if (ty > sy) {
                 tx %= ty
