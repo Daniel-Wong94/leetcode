@@ -3,10 +3,10 @@
  * @return {boolean}
  */
 
-// get the longest substring of A and B
+// get the number of moves for A and B
 // if there's AAABAAABBB, we know that it's impossible for that first B to be picked
-// with the longest substring, if it's a length of 5, max moves is length - 2
-// the longer substring will win
+// for each streak, if it's a length > 3, moves is length - 2
+// who ever has the least amount of moves will run out first and lose
 var winnerOfGame = function(colors) {
     let movesA = movesB = 0
     let previousColor = colors[0]
