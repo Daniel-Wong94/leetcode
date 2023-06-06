@@ -8,8 +8,6 @@
 // with the longest substring, if it's a length of 5, max moves is length - 2
 // the longer substring will win
 var winnerOfGame = function(colors) {
-    if (colors.length < 3) return false;
-    
     let movesA = movesB = 0
     let previousColor = colors[0]
     let streak = 0
