@@ -13,7 +13,7 @@
  */
 var kthSmallest = function(root, k) {
     const order = inOrder(root)
-    return order[order.length - k]
+    return order[k - 1]
 };
 
 const inOrder = root => {
@@ -24,5 +24,5 @@ const inOrder = root => {
     const left = inOrder(root.left)
     const right = inOrder(root.right)
     
-    return [...right, root.val, ...left]
+    return [...left, root.val, ...right]
 }
