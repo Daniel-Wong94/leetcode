@@ -10,6 +10,10 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
+
+// scenarios: 
+// one of the linked list is at null already
+// you have to carry over a value
 var addTwoNumbers = function(l1, l2) {
     const dummy = new ListNode()
     let curr = dummy;
