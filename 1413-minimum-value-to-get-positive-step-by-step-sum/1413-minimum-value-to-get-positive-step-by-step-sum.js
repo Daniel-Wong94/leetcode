@@ -15,5 +15,6 @@ var minStartValue = function(nums) {
         min = Math.min(min, total)
     }
     
+    // if min ends up to be 0, then we know all numbers were positive (> 0)
     return -min + 1
 };
