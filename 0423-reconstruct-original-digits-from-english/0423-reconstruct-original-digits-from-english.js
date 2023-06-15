@@ -66,9 +66,12 @@ const originalDigits = s => {
             case "o" : count[1]++; break; // shared by 0, 1, 2, 4            
             case "r" : count[3]++; break; // shared by 0, 3, 4            
             case "s" : count[7]++; break; // shared by 6, 7
+                
+            // these cases are dependent on having the other numbers be corrected first
+            // before getting corrected itself in the next steps
+            // therefore, count[5] is true once count[7] is true first
+            // and count[9] is true once count[5] is true first
             case "v" : count[5]++; break; // shared by 5, 7
-
-
             case "i" : count[9]++; break; // shared by 5, 6, 8, 9
         }
     }
@@ -76,9 +79,10 @@ const originalDigits = s => {
     // corrections
     count[7] -= count[6]; // 7 is now true
     count[5] -= count[7]; // 5 is now true 
+    count[9] -= count[5] + count[6] + count[8]; // 9 is now true    
     count[3] -= count[0] + count[4]; // 3 is now true
     count[1] -= count[0] + count[2] + count[4]; // 1 is now true
-    count[9] -= count[5] + count[6] + count[8]; // 9 is now true
+
     
     let result = ""
     
