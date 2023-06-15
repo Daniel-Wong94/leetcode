@@ -60,10 +60,14 @@ const originalDigits = s => {
             case "u" : count[4]++; break; // 4 is true
             case "x" : count[6]++; break; // 6 is true
             case "g" : count[8]++; break; // 8 is true
+            
+            // since these indicies share multiple numbers
+            // pick a letter that's shared by only the givens (evens)
+            case "o" : count[1]++; break; // shared by 0, 1, 2, 4            
             case "s" : count[7]++; break; // shared by 6, 7
             case "v" : count[5]++; break; // shared by 5, 7
             case "r" : count[3]++; break; // shared by 0, 3, 4
-            case "o" : count[1]++; break; // shared by 0, 1, 2, 4
+
             case "i" : count[9]++; break; // shared by 5, 6, 8, 9
         }
     }
