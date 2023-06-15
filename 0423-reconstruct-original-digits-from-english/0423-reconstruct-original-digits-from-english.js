@@ -77,20 +77,21 @@ const originalDigits = s => {
     }
     
     // corrections
-    count[3] -= count[0] + count[4]; // 3 is now true    
+    
+    // these must be done in this order 9 depends on 5 depends on 7
     count[7] -= count[6]; // 7 is now true
-    count[5] -= count[7]; // 5 is now true 
-    count[9] -= count[5] + count[6] + count[8]; // 9 is now true    
-
+    count[5] -= count[7]; // 5 depends on 7 to be true first
+    count[9] -= count[5] + count[6] + count[8]; // 9 depends on 5 to be true first
+    
+    // these can be in any order since they're using the absolute numbers
+    count[3] -= count[0] + count[4]; // 3 is now true
     count[1] -= count[0] + count[2] + count[4]; // 1 is now true
 
     
     let result = ""
     
     for (let i = 0; i < count.length; i++) {
-        for (let j = 0; j < count[i]; j++) {
-            result += i
-        }
+        result += String(i).repeat(count[i])
     }
     
     return result
