@@ -77,10 +77,11 @@ const originalDigits = s => {
     }
     
     // corrections
+    count[3] -= count[0] + count[4]; // 3 is now true    
     count[7] -= count[6]; // 7 is now true
     count[5] -= count[7]; // 5 is now true 
     count[9] -= count[5] + count[6] + count[8]; // 9 is now true    
-    count[3] -= count[0] + count[4]; // 3 is now true
+
     count[1] -= count[0] + count[2] + count[4]; // 1 is now true
 
     
