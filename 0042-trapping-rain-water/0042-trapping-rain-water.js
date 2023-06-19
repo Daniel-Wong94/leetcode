@@ -89,7 +89,7 @@ const trap = heights => {
             maxRight = Math.max(maxRight, heights[right])
         }
         
-        if (value > 0) result += value
+        result += value
     }
     
     return result
