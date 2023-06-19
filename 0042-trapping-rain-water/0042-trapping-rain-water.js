@@ -62,7 +62,7 @@
 //     return result
 // }
 
-// two pointer method to save on space
+// most optimized: two pointer method to save on space
 // you don't need both the maxLeft and maxRight
 // you only really need to know what the min is since that is what you'll always be taking
 const trap = heights => {
@@ -75,19 +75,21 @@ const trap = heights => {
     let maxRight = heights[right]
     
     while (left < right) {
+        let value;
+        
         if (maxLeft <= maxRight) {
-            const value = maxLeft - heights[left]
-            if (value > 0) result += value
+            value = maxLeft - heights[left]
             
             left++
             maxLeft = Math.max(maxLeft, heights[left])
         } else {
-            const value = maxRight - heights[right]
-            if (value > 0) result += value
+            value = maxRight - heights[right]
             
             right--
             maxRight = Math.max(maxRight, heights[right])
         }
+        
+        if (value > 0) result += value
     }
     
     return result
