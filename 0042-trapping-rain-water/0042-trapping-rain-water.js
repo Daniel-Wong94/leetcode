@@ -27,35 +27,67 @@
 // sacrifice space for time
 // have two arrays that correspond to the maxLeft and maxRight at index, i
 // iterate through the heights and do the same logic
+// accepted: Time O(n), Space O(n), n = heights.length
+// const trap = heights => {
+//     let result = 0
+//     const maxLeft = []
+//     const maxRight = []
+    
+//     let currMaxLeft = 0
+//     let currMaxRight = 0
+    
+//     for (let i = 0; i < heights.length; i++) {
+//         const leftHeight = heights[i]
+//         const rightHeight = heights[heights.length - 1 - i]
+        
+//         if (leftHeight > currMaxLeft) {
+//             currMaxLeft = leftHeight
+//         }
+        
+//         if (rightHeight > currMaxRight) {
+//             currMaxRight = rightHeight
+//         }
+        
+//         maxLeft[i] = currMaxLeft
+//         maxRight[heights.length - 1 - i] = currMaxRight
+//     }
+    
+//     for (let i = 0; i < heights.length; i++) {
+//         const bottleNeck = Math.min(maxLeft[i], maxRight[i])
+//         const value = bottleNeck - heights[i]
+        
+//         if (value > 0) result += value
+//     }
+    
+//     return result
+// }
+
+// two pointer method to save on space
+// you don't need both the maxLeft and maxRight
+// you only really need to know what the min is since that is what you'll always be taking
 const trap = heights => {
     let result = 0
-    const maxLeft = []
-    const maxRight = []
+
+    let left = 0
+    let right = heights.length - 1
     
-    let currMaxLeft = 0
-    let currMaxRight = 0
+    let maxLeft = heights[left]
+    let maxRight = heights[right]
     
-    for (let i = 0; i < heights.length; i++) {
-        const leftHeight = heights[i]
-        const rightHeight = heights[heights.length - 1 - i]
-        
-        if (leftHeight > currMaxLeft) {
-            currMaxLeft = leftHeight
+    while (left < right) {
+        if (maxLeft <= maxRight) {
+            const value = maxLeft - heights[left]
+            if (value > 0) result += value
+            
+            left++
+            maxLeft = Math.max(maxLeft, heights[left])
+        } else {
+            const value = maxRight - heights[right]
+            if (value > 0) result += value
+            
+            right--
+            maxRight = Math.max(maxRight, heights[right])
         }
-        
-        if (rightHeight > currMaxRight) {
-            currMaxRight = rightHeight
-        }
-        
-        maxLeft[i] = currMaxLeft
-        maxRight[heights.length - 1 - i] = currMaxRight
-    }
-    
-    for (let i = 0; i < heights.length; i++) {
-        const bottleNeck = Math.min(maxLeft[i], maxRight[i])
-        const value = bottleNeck - heights[i]
-        
-        if (value > 0) result += value
     }
     
     return result
