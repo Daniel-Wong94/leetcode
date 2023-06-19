@@ -10,13 +10,13 @@ var Logger = function() {
  */
 Logger.prototype.shouldPrintMessage = function(timestamp, message) {
     if (!this.logs.hasOwnProperty(message)) {
-        this.logs[message] = [timestamp]
+        this.logs[message] = timestamp
         return true
     } else {
-        const lastLog = this.logs[message][this.logs[message].length - 1]
+        const lastLog = this.logs[message]
         
         if (timestamp - lastLog >= 10) {
-            this.logs[message].push(timestamp)
+            this.logs[message] = timestamp
             return true           
         } else {
             return false
