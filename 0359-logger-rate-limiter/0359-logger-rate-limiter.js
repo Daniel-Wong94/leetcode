@@ -18,9 +18,9 @@ Logger.prototype.shouldPrintMessage = function(timestamp, message) {
         if (timestamp - lastLog >= 10) {
             this.logs[message] = timestamp
             return true           
-        } else {
-            return false
         }
+        
+        return false
     }
     
 };
