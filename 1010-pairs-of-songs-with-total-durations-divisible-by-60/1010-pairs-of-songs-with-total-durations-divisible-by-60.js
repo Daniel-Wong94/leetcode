@@ -2,6 +2,23 @@
  * @param {number[]} time
  * @return {number}
  */
+// var numPairsDivisibleBy60 = function(times) {
+//     const remainders = {}
+//     let result = 0
+    
+//     for (const time of times) {
+//         const key = time % 60
+        
+//         if (!(key in remainders)) {
+//             remainders[key] = []
+//         } else {
+            
+//         }
+        
+//         remainders[key].push(time)
+//     }
+// };
+
 var numPairsDivisibleBy60 = function(time) {
     let pairs = 0
     
