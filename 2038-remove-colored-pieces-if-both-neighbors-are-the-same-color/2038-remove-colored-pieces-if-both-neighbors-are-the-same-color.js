@@ -23,7 +23,7 @@ var winnerOfGame = function(colors) {
             streak = 1
         }
     }
-    
+// if we are allowed to concat a stopper like "!" then we don't need these lines of code
 //     if (previousColor === "A" && streak >= 3) movesA += streak - 2 
 //     if (previousColor === "B" && streak >= 3) movesB += streak - 2 
     
