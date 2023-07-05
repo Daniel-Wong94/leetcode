@@ -15,6 +15,7 @@ var winnerOfGame = function(colors) {
     for (const color of colors) {
         if (color === previousColor) streak++
         else {
+            // subtract the length of the streak by 2 to get the number of moves
             if (previousColor === "A" && streak >= 3) movesA += streak - 2 
             if (previousColor === "B" && streak >= 3) movesB += streak - 2 
             previousColor = color
