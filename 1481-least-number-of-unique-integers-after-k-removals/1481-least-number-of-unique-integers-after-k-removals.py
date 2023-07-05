@@ -4,7 +4,6 @@ class Solution:
     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
         count = Counter(arr)
         sorted_count = sorted(count.values())
-        print(sorted_count)
         
         deletions = 0
         i = 0
@@ -13,8 +12,8 @@ class Solution:
             if sorted_count[i] <= k:
                 deletions += 1
                 k -= sorted_count[i]
-                i += 1
             else:
-                break     
+                break    
+            i += 1
             
         return len(sorted_count) - deletions
