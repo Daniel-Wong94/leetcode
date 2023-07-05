@@ -13,8 +13,8 @@ class Solution:
             if sorted_count[i] <= k:
                 deletions += 1
                 k -= sorted_count[i]
+                i += 1
             else:
-                break
-            i += 1        
+                break     
             
         return len(sorted_count) - deletions
