@@ -40,7 +40,7 @@ const subarraySum = (nums, k) => {
         
         const complement = prefixSum - k
         
-        // if there's been a running sum before, them update count
+        // if there's been a running sum before, add the frequency of it to count
         count += freq[complement] || 0
         
         // update hashmap
