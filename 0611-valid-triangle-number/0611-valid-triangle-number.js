@@ -46,6 +46,7 @@
 // optimization: you do NOT need to satisfy all three conditions for validating triangle
 // you only need to satisfy sideA + sideB > sideC if sideA <= sideB <= sideC
 // sort the array and do 3sum
+// Time: O(n^2 log (n))
 const triangleNumber = nums => {
     // sort array
     nums.sort((a, b) => a - b)
@@ -60,10 +61,10 @@ const triangleNumber = nums => {
         // keeping sideB >= sideA
         for (let sideB = sideA + 1; sideB < nums.length - 1 && nums[sideA] !== 0; sideB++) {
             // sideC needs to be greater than target (sideA + sideB)
-            const target = nums[sideA] + nums[sideB]
+            const minimumValidSideC = nums[sideA] + nums[sideB]
             
             // index of where the minimum valid sideC
-            const sideC = binarySearch(nums, left, nums.length - 1, target)
+            const sideC = binarySearch(nums, left, nums.length - 1, minimumValidSideC)
             
             // we know that from sideC and onward are all valid sideC's because array is sorted
             count += sideC - sideB - 1
@@ -88,4 +89,4 @@ const binarySearch = (nums, left, right, target) => {
     return left
 }
 
-
+// most optimized solution: 
