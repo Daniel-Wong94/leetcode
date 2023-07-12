@@ -61,12 +61,12 @@ const triangleNumber = nums => {
         // keeping sideB >= sideA
         for (let sideB = sideA + 1; sideB < nums.length - 1 && nums[sideA] !== 0; sideB++) {
             // sideC needs to be greater than target (sideA + sideB)
-            const minimumValidSideC = nums[sideA] + nums[sideB]
+            const maxValidSideC = nums[sideA] + nums[sideB]
             
             // index of where the minimum valid sideC
-            const sideC = binarySearch(nums, left, nums.length - 1, minimumValidSideC)
+            const sideC = binarySearch(nums, left, nums.length - 1, maxValidSideC)
             
-            // we know that from sideC and onward are all valid sideC's because array is sorted
+            // we know that from maxValidSideC to sideB are all valid sideC's because array is sorted
             count += sideC - sideB - 1
         }
     }
