@@ -47,46 +47,72 @@
 // you only need to satisfy sideA + sideB > sideC if sideA <= sideB <= sideC
 // sort the array and do 3sum
 // Time: O(n^2 log (n))
+// const triangleNumber = nums => {
+//     // sort array
+//     nums.sort((a, b) => a - b)
+    
+//     let count = 0
+    
+//     // iterate and keep sideA <= sideB
+//     for (let sideA = 0; sideA < nums.length - 2; sideA++) {
+//         // left bounds of binary search
+//         const left = sideA + 2
+        
+//         // keeping sideB >= sideA
+//         for (let sideB = sideA + 1; sideB < nums.length - 1 && nums[sideA] !== 0; sideB++) {
+//             // sideC needs to be greater than target (sideA + sideB)
+//             const maxValidSideC = nums[sideA] + nums[sideB]
+            
+//             // index of where the minimum valid sideC
+//             const sideC = binarySearch(nums, left, nums.length - 1, maxValidSideC)
+            
+//             // we know that from maxValidSideC to sideB are all valid sideC's because array is sorted
+//             count += sideC - sideB - 1
+//         }
+//     }
+    
+//     return count
+// }
+
+// // search for the index of the minimum valid sideC and return it
+// const binarySearch = (nums, left, right, target) => {
+//     while (right >= left && right < nums.length) {
+//         const mid = Math.floor((left + right) / 2)
+        
+//         if (nums[mid] >= target) {
+//             right = mid - 1
+//         } else {
+//             left = mid + 1
+//         }
+//     }
+    
+//     return left
+// }
+
+// most optimized solution: instead of doing a bs search to find the right upper limit,
+// we can just do a single pass
 const triangleNumber = nums => {
-    // sort array
+    // sort the array
     nums.sort((a, b) => a - b)
     
     let count = 0
     
-    // iterate and keep sideA <= sideB
+    // keep sideA <= sideB
     for (let sideA = 0; sideA < nums.length - 2; sideA++) {
-        // left bounds of binary search
-        const left = sideA + 2
+        // starting position of sideC
+        let maxValidSideC = sideA + 2
         
-        // keeping sideB >= sideA
+        // edge cases: skip any side length of 0
         for (let sideB = sideA + 1; sideB < nums.length - 1 && nums[sideA] !== 0; sideB++) {
-            // sideC needs to be greater than target (sideA + sideB)
-            const maxValidSideC = nums[sideA] + nums[sideB]
+            // from the starting position of sideC, keep incrementing sideC until you find upper right bound
+            while (maxValidSideC < nums.length && nums[sideA] + nums[sideB] > nums[maxValidSideC]) {
+                maxValidSideC++
+            } 
             
-            // index of where the minimum valid sideC
-            const sideC = binarySearch(nums, left, nums.length - 1, maxValidSideC)
-            
-            // we know that from maxValidSideC to sideB are all valid sideC's because array is sorted
-            count += sideC - sideB - 1
+            // you can assume that values between sideB to sideC are valid because the array is sorted
+            count += maxValidSideC - sideB - 1
         }
     }
     
     return count
 }
-
-// search for the index of the minimum valid sideC and return it
-const binarySearch = (nums, left, right, target) => {
-    while (right >= left && right < nums.length) {
-        const mid = Math.floor((left + right) / 2)
-        
-        if (nums[mid] >= target) {
-            right = mid - 1
-        } else {
-            left = mid + 1
-        }
-    }
-    
-    return left
-}
-
-// most optimized solution: 
