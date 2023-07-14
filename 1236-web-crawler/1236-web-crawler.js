@@ -37,7 +37,7 @@ var crawl = function(startUrl, htmlParser) {
         }
     }
     
-    return [...visited.values()]
+    return Array.from(visited)
 };
 
 const getHostname = url => url.split("/")[2]
