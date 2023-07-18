@@ -1,5 +1,8 @@
 from collections import Counter
 
+# get the frequency of each number
+# sort the frequency in ascending order
+# greedy: delete the numbers with the lowest frequency first
 class Solution:
     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
         count = Counter(arr)
