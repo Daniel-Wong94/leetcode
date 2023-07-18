@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-// count number of segments with repeating bits
+// count number of segments with repeating bits of target
 var minFlips = function(target) {
     let prev = target[0]
     let result = prev === "1" ? 1 : 0
