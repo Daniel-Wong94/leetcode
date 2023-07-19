@@ -3,6 +3,10 @@
  * @param {string} order
  * @return {boolean}
  */
+
+// map out the index of the alien alphabet
+// check adjacent words and check against their chars
+// return false once the next word's char index is greater than curr word
 var isAlienSorted = function(words, order) {
     const index = {}
     
