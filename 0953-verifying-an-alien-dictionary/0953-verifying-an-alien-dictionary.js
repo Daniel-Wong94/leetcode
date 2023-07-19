@@ -10,7 +10,6 @@ var isAlienSorted = function(words, order) {
         index[order[i]] = i 
     }
     
-    console.log("INDEX: ", index)
     for (let i = 0; i < words.length - 1; i++) {
         const currWord = words[i]
         const nextWord = words[i + 1]
