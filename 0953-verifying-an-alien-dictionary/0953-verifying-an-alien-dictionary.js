@@ -20,7 +20,6 @@ var isAlienSorted = function(words, order) {
         
         let j = 0
         while (j < currWord.length && j < nextWord.length) {
-            console.log(j)
             const currChar = currWord[j]
             const nextChar = nextWord[j]
             
@@ -30,6 +29,7 @@ var isAlienSorted = function(words, order) {
             j++
         }
         
+        // check if the currWord length < nextWord length
         if (j === nextWord.length && j < currWord.length) return false
     }
     
