@@ -10,6 +10,8 @@
 // else: check if length of s group is the same as word group
 var expressiveWords = function(s, words) {
     let result = 0
+    
+    // map out the char and it's group count for s and words
     const sMap = mapWord(s)
     const wordsMap = []
     
@@ -24,6 +26,7 @@ var expressiveWords = function(s, words) {
     return result
 };
 
+// returns a 2D array of [[charCount, char]]
 const mapWord = word => {
     word += "!"
     const result = []
