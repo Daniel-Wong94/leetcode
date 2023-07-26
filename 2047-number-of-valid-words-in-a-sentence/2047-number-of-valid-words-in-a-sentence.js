@@ -5,7 +5,6 @@
 var countValidWords = function(sentence) {
     const tokens = sentence.trim().split(/\s+/)
     let result = 0
-    console.log(tokens)
     
     for (const token of tokens) {
         if (validToken(token)) result++
@@ -38,6 +37,5 @@ const validToken = token => {
         prevChar = char
     }
     
-    console.log(token)
     return true
 }
