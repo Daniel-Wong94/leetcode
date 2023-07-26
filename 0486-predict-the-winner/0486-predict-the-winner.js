@@ -7,14 +7,19 @@
 // dp: compare sum of the left vs right decisions, choosing the max score after decision
 var PredictTheWinner = function(nums) {
     
-    const getWinner = (left, right) => {
-        // base case: single 
+    const getWinner = (left, right, memo = {}) => {
+        const key = left + ", " + right
+        if (key in memo) return memo[key]
+        
+        // base case: no more elements left in nums
         if (left > right) return 0
 
-        const takeLeft = nums[left] - getWinner(left + 1, right)
-        const takeRight = nums[right] - getWinner(left, right - 1)
+        // pick a side, then subtract whatever player2 will choose
+        const takeLeft = nums[left] - getWinner(left + 1, right, memo)
+        const takeRight = nums[right] - getWinner(left, right - 1, memo)
 
-        return Math.max(takeLeft, takeRight)
+        memo[key] = Math.max(takeLeft, takeRight)
+        return memo[key]
     }
     
     return getWinner(0, nums.length - 1) >= 0
