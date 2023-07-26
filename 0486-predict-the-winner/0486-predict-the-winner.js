@@ -8,7 +8,8 @@
 var PredictTheWinner = function(nums) {
     
     const getWinner = (left, right) => {
-        if (left === right) return nums[left]
+        // base case: single 
+        if (left > right) return 0
 
         const takeLeft = nums[left] - getWinner(left + 1, right)
         const takeRight = nums[right] - getWinner(left, right - 1)
