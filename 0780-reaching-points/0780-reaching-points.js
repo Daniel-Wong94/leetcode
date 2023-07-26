@@ -33,16 +33,17 @@ const reachingPoints = (sx, sy, tx, ty) => {
         // the nested if statements cover for when neither tx nor ty have reached source
         // the nested else statements cover for when either the x or y have already met source
         // once one of them has met the source, you can just isolate the other and modulo the difference to see if it's reachable
-        if (tx > ty) {
-            if (ty > sy) {
+        
+        if (tx > ty) { // this means the previous step was adding y to x, so we have to take away y from x
+            if (ty > sy) {  // check if ty has not met its sy, if not then take away y (optimize by using modulo instead)
                 tx %= ty
-            } else {
+            } else {        // if ty has met sy, we only need to solve for tx (modulo the difference between tx and sx by ty)
                 return (tx - sx) % ty === 0
             }
-        } else {
-            if (tx > sx) {
+        } else {       // this means the previous step was adding x to y, so we have to take away x from y
+            if (tx > sx) {  // check if tx has met sx, if not then take away x (optimize by using modulu instead)
                 ty %= tx
-            } else {
+            } else {        // if tx has met sx, we only need to solve for ty (modulo the difference between ty and sy by tx)
                 return (ty - sy) % tx === 0
             }
         }
