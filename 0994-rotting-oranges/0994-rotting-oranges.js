@@ -22,6 +22,7 @@ var orangesRotting = function(grid) {
         }
     }
     
+    // edge case: no fresh oranges
     if (totalRotten === totalOranges) return 0;
         
     // perform BFS, if set.size === totalOranges, return true, return false if end of loop
