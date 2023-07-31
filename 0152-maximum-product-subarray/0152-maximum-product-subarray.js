@@ -4,7 +4,6 @@
  */
 var maxProduct = function(nums) {
     if (nums.length === 0) return 0
-    if (nums.length === 1) return nums[0]
     let max = nums[0]
     
     for (let i = 0; i < nums.length; i++) {
