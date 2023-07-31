@@ -21,13 +21,15 @@ var orangesRotting = function(grid) {
             if (value !== 0) totalOranges++
         }
     }
+    
+    if (totalRotten === totalOranges) return 0;
         
     // perform BFS, if set.size === totalOranges, return true, return false if end of loop
     while (queue.length) {
         const [row, col, minute] = queue.shift()
         
         const neighbors = getNeighbors(row, col, grid)
-        console.log(neighbors)
+
         for (const [neighborRow, neighborCol] of neighbors) {
             if (grid[neighborRow][neighborCol] === 1) {
                 grid[neighborRow][neighborCol] = 2
@@ -40,7 +42,7 @@ var orangesRotting = function(grid) {
         }
     }
 
-    return totalRotten === totalOranges ? 0 : -1
+    return -1
 };
 
 const getNeighbors = (row, col, grid, visited) => {
