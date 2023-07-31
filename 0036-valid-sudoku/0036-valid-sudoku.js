@@ -54,6 +54,8 @@ const isValidSudoku = board => {
     const cols = Array.from({ length: N }, () => Array(N).fill(0));
     const boxes = Array.from({ length: N }, () => Array(N).fill(0));
     
+    // use the board[row][col] - 1 value as the position for each rows, cols, boxes array
+    // the position is used as a marker for a visited value
     for (let row = 0; row < N; row++) {
         for (let col = 0; col < N; col++) {
             if (board[row][col] === ".") continue;
