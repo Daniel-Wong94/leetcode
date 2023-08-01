@@ -4,6 +4,10 @@
  * @param {string[]} strs
  * @return {string}
  */
+
+// edge case: if you use an ASCII delimiter, the str might contain it also
+// solution: use a non ASCII character like π
+
 var encode = function(strs) {
     return strs.join("π")
 };
