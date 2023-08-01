@@ -18,6 +18,7 @@
 // };
 
 const maxProduct = nums => {
+    // edge case: empty nums array
     if (nums.length === 0) return 0
     
     let currMax = nums[0]
@@ -26,11 +27,16 @@ const maxProduct = nums => {
     
     for (let i = 1; i < nums.length; i++) {
         const curr = nums[i]
+        
+        // curr is chosen if the accumalation is horrible compared to curr
+        // currMax will be chosen if subarray has been just positive numbers
+        // currMin will be chosen if a negative number is accumalated twice
         const tempMax = Math.max(curr, currMax * curr, currMin * curr)
         currMin = Math.min(curr, currMax * curr, currMin * curr)
         
         currMax = tempMax
         
+        // update the highest score after each iteration
         result = Math.max(currMax, result)
     }
     
