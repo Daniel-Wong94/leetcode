@@ -36,7 +36,7 @@ const minEatingSpeed = (piles, h) => {
     while (left < right) {
         const speed = Math.floor((left + right) / 2)
         
-        const time = eat(piles, h, speed)
+        const time = piles.reduce((a, b) => a + Math.ceil(b / speed) , 0)
         
         if (time <= h) {
             right = speed
