@@ -33,12 +33,13 @@ const minEatingSpeed = (piles, h) => {
     let left = 0
     let right = Math.max(...piles) // O(n)
     
+    // when left == right, we've found our min speed
     while (left < right) {
         const speed = Math.floor((left + right) / 2)
         
-        const time = piles.reduce((a, b) => a + Math.ceil(b / speed) , 0)
+        const timeToEat = piles.reduce((a, b) => a + Math.ceil(b / speed) , 0)
         
-        if (time <= h) {
+        if (timeToEat <= h) {
             right = speed
         } else {
             left = speed + 1
@@ -47,15 +48,3 @@ const minEatingSpeed = (piles, h) => {
     
     return left
 }
-
-const eat = (piles, h, speed) => {
-    let time = 0
-    
-    for (const pile of piles) {
-        time += Math.ceil(pile / speed)
-    }
-    
-    return time
-}
-
-
