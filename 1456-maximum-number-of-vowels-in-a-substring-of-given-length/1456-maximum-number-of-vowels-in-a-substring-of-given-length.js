@@ -14,10 +14,8 @@ var maxVowels = function(s, k) {
     }
     
     maxStreak = streak
-    console.log(streak)
     
     for (let i = k; i < s.length; i++) {
-        console.log(s[i-k], s[i])
         if (VOWELS.includes(s[i - k])) {
             streak--
         }
@@ -25,7 +23,7 @@ var maxVowels = function(s, k) {
         if (VOWELS.includes(s[i])) {
             streak++
         }
-        console.log(streak)
+
         maxStreak = Math.max(maxStreak, streak)
     }
     
