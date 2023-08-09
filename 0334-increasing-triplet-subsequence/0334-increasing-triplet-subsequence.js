@@ -21,6 +21,8 @@ var increasingTriplet = function(nums) {
             // we only reach this when smallest < secondSmallest < num
             return true
         }
+        
+        // we continue to next iteration when num is less than smallest and secondSmallest
     }
     
     return false
