@@ -12,10 +12,13 @@ var increasingTriplet = function(nums) {
     
     for (const num of nums) {
         if (num <= smallest) {
+            // if there's a new smallest, it'll update
             smallest = num
         } else if (num <= secondSmallest) {
+            // whenever smallest gets updated, secondSmallest will be updated next
             secondSmallest = num
         } else {
+            // we only reach this when smallest < secondSmallest < num
             return true
         }
     }
