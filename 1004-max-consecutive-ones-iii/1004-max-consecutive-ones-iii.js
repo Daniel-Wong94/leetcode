@@ -10,26 +10,17 @@
 // move the left window to maintain 0  count <= k
 var longestOnes = function(nums, k) {
     let left = 0
-    let right = 0
     let max = 0
-    let windowZero = 0
     
-    while (right < nums.length) {
-        if (nums[right] === 0) {
-            k--
-        }
+    for (let right = 0; right < nums.length; right++) {
+        if (nums[right] === 0) k--
 
-        
         while (k < 0) {
-            if (nums[left] === 0) {
-                k++
-            }
-            
+            if (nums[left] === 0) k++
             left++
         }
-        max = Math.max(max, right - left + 1)
         
-        right++        
+        max = Math.max(max, right - left + 1)    
     }
     
     return max
