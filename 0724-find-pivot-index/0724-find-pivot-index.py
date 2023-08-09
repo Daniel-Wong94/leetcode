@@ -1,5 +1,3 @@
-# from numpy import sum
-
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
         right_sum = sum(nums)
