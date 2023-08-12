@@ -10,14 +10,13 @@ var RecentCounter = function() {
 RecentCounter.prototype.ping = function(t) {
     this.counter.push(t)
     
-    let recentRequests = 0
     const range = t - 3000
     
-    for (const request of this.counter) {
-        if (request >= range) recentRequests++
+    while (this.counter[0] < range) {
+        this.counter.shift()
     }
     
-    return recentRequests
+    return this.counter.length
 };
 
 /** 
