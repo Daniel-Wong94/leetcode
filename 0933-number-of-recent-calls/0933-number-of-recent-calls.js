@@ -10,14 +10,14 @@ var RecentCounter = function() {
 RecentCounter.prototype.ping = function(t) {
     this.counter.push(t)
     
-    const recentRequests = []
+    let recentRequests = 0
     const range = t - 3000
     
     for (const request of this.counter) {
-        if (request >= range) recentRequests.push(request)
+        if (request >= range) recentRequests++
     }
     
-    return recentRequests.length
+    return recentRequests
 };
 
 /** 
