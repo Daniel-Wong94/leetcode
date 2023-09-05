@@ -9,5 +9,5 @@ var smallestRangeI = function(nums, k) {
     const max = Math.max(...nums) - k
     const min = Math.min(...nums) + k
     
-    return max - min < 0 ? 0 : max - min
+    return Math.max(0, max - min)
 };
