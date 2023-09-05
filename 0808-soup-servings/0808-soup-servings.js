@@ -3,6 +3,8 @@
  * @return {number}
  */
 
+// there is no choice to take from soupB and NOT from soupA,
+// therefore, as n increases, you reach closer to 1
 var soupServings = function(n) {
     // reduce the total mL to serving sizes (25ml per serving)
     const servings = Math.ceil(n / 25)
