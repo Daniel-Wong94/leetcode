@@ -14,10 +14,13 @@ var wordBreak = function(s, wordDict) {
         const prefix = s.substring(0, i)
         
         if (wordDict.includes(prefix)) {
-            const sublist = wordBreak(s.substring(i), wordDict)
-            
-            for (const sub of sublist) {
-                result.push(prefix + " " + sub)
+            // dfs all the way to the last word that works
+            // the result array from the previous recursive step becomes your suffixes array
+            const suffixes = wordBreak(s.substring(i), wordDict)
+
+            // build up the sentences
+            for (const suffix of suffixes) {
+                result.push(prefix + " " + suffix)
             }
         }
     }
