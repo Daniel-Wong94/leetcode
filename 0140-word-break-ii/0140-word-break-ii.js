@@ -3,12 +3,14 @@
  * @param {string[]} wordDict
  * @return {string[]}
  */
+
+// inefficient
 var wordBreak = function(s, wordDict) {
     const result = []
     
     if (wordDict.includes(s)) result.push(s)
     
-    for (let i = 1; i < s.length; i++) {
+    for (let i = 0; i < s.length; i++) {
         const prefix = s.substring(0, i)
         
         if (wordDict.includes(prefix)) {
