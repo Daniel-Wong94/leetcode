@@ -20,7 +20,7 @@ var lowestCommonAncestor = function(root, p, q) {
     const left = lowestCommonAncestor(root.left, p, q)
     const right = lowestCommonAncestor(root.right, p , q)
     
-    // left and right will return either null or a TreeNode
-    // if both nodes have not been found, only return the one that has been found
+    // left and right will return either false or a TreeNode
+    // returns the LCA when both nodes are found, or just returns the found node
     return left && right ? root : left || right
 }
