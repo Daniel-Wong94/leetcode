@@ -11,6 +11,9 @@
  * @param {TreeNode} q
  * @return {TreeNode}
  */
+
+// recursively look for node p and q
+// once found, return the current root node
 var lowestCommonAncestor = function(root, p, q) {
     // base case: reach null or reach p or q
     if (!root) return false
@@ -24,3 +27,4 @@ var lowestCommonAncestor = function(root, p, q) {
     // returns the LCA when both nodes are found, or just returns the found node
     return left && right ? root : left || right
 }
+
