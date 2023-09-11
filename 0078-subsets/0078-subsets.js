@@ -3,22 +3,21 @@
  * @return {number[][]}
  */
 var subsets = function(nums) {
-    // base case
+    // base case: nums is empty, then return [] as the only subset
     if (!nums.length) return [[]]
     
-    const firstElement = nums[0]
+    // recursive: we take the first element
+    const firstEl = nums[0]
     
-    // decision branch without the first element
-    const subsetsWithout = subsets(nums.slice(1))
+    // recursive: we don't take the first element
+    const subsetsWithoutFirstEl = subsets(nums.slice(1))
     
-    // decision branch with the first element
-    const subsetsWith = []
+    // put the first element back into the subsets before returning
+    const subsetsWithFirstEl = []
     
-    
-    // build up the "with" branch by combining the first element and the without subsets
-    for (const subset of subsetsWithout) {
-        subsetsWith.push([firstElement, ...subset])
+    for (const subset of subsetsWithoutFirstEl) {
+        subsetsWithFirstEl.push([firstEl, ...subset])
     }
     
-    return [...subsetsWith, ...subsetsWithout]
+    return [...subsetsWithoutFirstEl, ...subsetsWithFirstEl]
 };
