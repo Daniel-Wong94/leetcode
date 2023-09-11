@@ -4,7 +4,6 @@
  * @return {number[][]}
  */
 var combinationSum = function(candidates, target) {
-    candidates.sort((a, b) => a - b)
     const result = []
     
     const dp = (i, total, current = []) => {
