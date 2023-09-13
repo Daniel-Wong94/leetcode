@@ -2,42 +2,42 @@
  * @param {string} s
  * @return {string}
  */
+// use a stack
+// start popping when ] is reached
+// pop until no more numbers are left over
 var decodeString = function(s) {
+    const digits = "0123456789"
     const stack = []
     
-    // keep pushing to stack until ']' is found, then decode the latest string
-    for (const char of s) {
-        if (char === "]") {
-            const decode = []
-            
-            while (stack.length && stack[stack.length - 1] !== "[") {
-                decode.push(stack.pop())
+    for (const c of s) {
+        console.log("stack", stack, c, !isNaN(stack[stack.length - 1]))
+        if (c !== "]") {
+            if (digits.includes(c) && !isNaN(stack[stack.length - 1])) {
+                stack[stack.length - 1] = stack[stack.length - 1] + c
+            } else {
+                stack.push(c)                
             }
+
+        } else {
+            let num = ""
+            let char = "";
             
-            stack.pop() // remove the next "[" from stack
-            
-            // build up the multiplier
-            let times = 0
-            let base = 1;
-            
-            while (!isNaN(stack[stack.length - 1])) {
-                times = times + stack.pop() * base
-                base *= 10
-            }
-            
-            // push the decoded string back into stack
-            while (times !== 0) {
-                for (let i = decode.length - 1; i >= 0; i--) {
-                    stack.push(decode[i])
+            while (true) {
+                let popped = stack.pop()
+                let next = stack[stack.length - 1]
+                
+                if (popped === "[") {
+                    console.log("HERE", popped, next)
+                    num = stack.pop()
+                    break;
                 }
                 
-                times--
+                char = popped + char
             }
-        } else {
-        // if neither '[' nor ']', then must be a char
-            stack.push(char)
+            
+            stack.push(char.repeat(Number(num)))
         }
     }
-
-    return stack.join('');
+    
+    return stack.join("")
 }
