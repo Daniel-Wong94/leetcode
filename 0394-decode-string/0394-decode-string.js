@@ -10,7 +10,6 @@ var decodeString = function(s) {
     const stack = []
     
     for (const c of s) {
-        console.log("stack", stack, c, !isNaN(stack[stack.length - 1]))
         if (c !== "]") {
             if (digits.includes(c) && !isNaN(stack[stack.length - 1])) {
                 stack[stack.length - 1] = stack[stack.length - 1] + c
