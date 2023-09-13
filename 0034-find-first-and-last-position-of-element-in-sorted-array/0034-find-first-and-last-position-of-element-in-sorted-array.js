@@ -5,6 +5,8 @@
  */
 
 // two binary searches to find lower and upper bound
+// lower bound: you know you found it if left === target or mid - 1 !== target
+// upper bound: you know you found it if right === target or mid + 1 !== target
 var searchRange = function(nums, target) {
     const lower = lowerBound(nums, target)
     if (lower === -1) return [-1, -1]
