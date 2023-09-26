@@ -16,7 +16,7 @@ var combinationSum2 = function(candidates, target) {
             return
         }
         
-        // initialize to -1 to prevent error on first iteration
+        // initialize to -1 (given that candidates[i] > 0) to prevent error on first iteration
         let prevCandidate = -1
         
         for (let i = current; i < candidates.length; i++) {
