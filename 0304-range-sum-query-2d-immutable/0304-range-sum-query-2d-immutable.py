@@ -13,19 +13,21 @@ class NumMatrix:
                 # update prefix_sum
                 prefix_sum += matrix[r][c]
                 
-                # add prefix sum right above
-                prefix_sum_above = self.sumMat[r][c + 1]
+                # add prefix sum above the column and store it to bottom right
+                prefix_sum_above = self.sumMat[r + 1 - 1][c + 1]
                 self.sumMat[r + 1][c + 1] = prefix_sum + prefix_sum_above
                 
     def sumRegion(self, r1: int, c1: int, r2: int, c2: int) -> int:
         # offset to our new 2D matrix, sumMat
         r1, c1, r2, c2 = r1 + 1, c1 + 1, r2 + 1, c2 + 1
 
+        # get all necessary sum components
         bottom_right = self.sumMat[r2][c2]
         top_row = self.sumMat[r1 - 1][c2]
         left_column = self.sumMat[r2][c1 - 1]
         top_left = self.sumMat[r1 - 1][c1 - 1]
         
+        # add the top_left back since it was subtracted twice (top_row and left_column)
         return bottom_right - top_row - left_column + top_left
 
 # Your NumMatrix object will be instantiated and called as such:
