@@ -5,26 +5,40 @@
  */
 var combinationSum2 = function(candidates, target) {
     const results = []
+    
+    // sorting the candidates makes it easier to handle duplicate numbers (next to each other)
     candidates.sort((a, b) => a - b)
     
     const dp = (combination, remain, current, results) => {
+        // base case: remain has reached target, so push copy of combination to final result
         if (remain === 0) {
             results.push(combination.slice())
             return
         }
         
+        // initialize to -1 to prevent error on first iteration
+        let prevCandidate = -1
+        
         for (let i = current; i < candidates.length; i++) {
-            if (i > current && candidates[i] === candidates[i - 1]) {
+            const nextCandidate = candidates[i]
+            
+            // skip index when current candidate is same as previous
+            if (nextCandidate === prevCandidate) {
                 continue
             }
             
-            const next = candidates[i]
+            // optimize: break out of loop if we pass target
+            if (remain - nextCandidate < 0) break;
             
-            if (remain - next < 0) break;
+            // decision: take the nextCandidate
+            combination.push(nextCandidate)
+            dp(combination, remain - nextCandidate, i + 1, results)
             
-            combination.push(next)
-            dp(combination, remain - next, i + 1, results)
+            // decision: don't take nextCandidate (pop it back out before next iteration)
             combination.pop()
+            
+            // store the previous candidate
+            prevCandidate = candidates[i]
         }
         
     }
