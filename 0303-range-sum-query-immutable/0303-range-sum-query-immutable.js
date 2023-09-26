@@ -13,7 +13,6 @@ var NumArray = function(nums) {
         this.sums.push(runningSum)
     }
     
-    console.log("HERE",nums, this.sums)
 };
 
 /** 
