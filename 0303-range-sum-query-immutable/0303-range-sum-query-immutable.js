@@ -1,8 +1,19 @@
 /**
  * @param {number[]} nums
  */
+// brute force: O(n) to linearly add up
+// better: trade space for speed by using hash for every possible (O(n^2)) pairs
+// optimize: O(1) create a running sum array 
 var NumArray = function(nums) {
-    this.nums = nums
+    this.sums = [0]
+    
+    let runningSum = 0
+    for (let i = 0; i < nums.length; i++) {
+        runningSum += nums[i]
+        this.sums.push(runningSum)
+    }
+    
+    console.log("HERE",nums, this.sums)
 };
 
 /** 
@@ -11,13 +22,7 @@ var NumArray = function(nums) {
  * @return {number}
  */
 NumArray.prototype.sumRange = function(left, right) {
-    let sum = 0
-    
-    for (let i = left; i <= right; i++) {
-        sum += this.nums[i]
-    }
-    
-    return sum
+    return this.sums[right + 1] - this.sums[left]
 };
 
 /** 
