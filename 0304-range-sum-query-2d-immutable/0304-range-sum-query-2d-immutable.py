@@ -14,7 +14,8 @@ class NumMatrix:
                 prefix_sum += matrix[r][c]
                 
                 # add prefix sum above the column and store it to bottom right
-                prefix_sum_above = self.sumMat[r + 1 - 1][c + 1]
+                # the row (and col) is offset by +1, but we want the row above -1, which leaves us with just r
+                prefix_sum_above = self.sumMat[r][c + 1]
                 self.sumMat[r + 1][c + 1] = prefix_sum + prefix_sum_above
                 
     def sumRegion(self, r1: int, c1: int, r2: int, c2: int) -> int:
