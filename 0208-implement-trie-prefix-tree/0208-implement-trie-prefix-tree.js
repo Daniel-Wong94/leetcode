@@ -1,6 +1,12 @@
+class TrieNode {
+    constructor(children, endOfWord) {
+        this.children = {}
+        this.endOfWord = false
+    }
+}
 
 var Trie = function() {
-    this.trie = new Set()
+    this.root = new TrieNode()
 };
 
 /** 
@@ -8,7 +14,16 @@ var Trie = function() {
  * @return {void}
  */
 Trie.prototype.insert = function(word) {
-    this.trie.add(word)
+    let current = this.root
+    
+    for (const char of word) {
+        if (!current.children.hasOwnProperty(char)) {
+            current.children[char] = new TrieNode()
+        }
+        current = current.children[char]
+    }
+    
+    current.endOfWord = true
 };
 
 /** 
@@ -16,7 +31,16 @@ Trie.prototype.insert = function(word) {
  * @return {boolean}
  */
 Trie.prototype.search = function(word) {
-    return this.trie.has(word)
+    let current = this.root
+    
+    for (const char of word) {
+        if (!current.children.hasOwnProperty(char)) {
+            return false
+        }
+        current = current.children[char]
+    }
+    
+    return current.endOfWord
 };
 
 /** 
@@ -24,13 +48,16 @@ Trie.prototype.search = function(word) {
  * @return {boolean}
  */
 Trie.prototype.startsWith = function(prefix) {
-    let hasPrefix = false
+    let current = this.root
     
-    this.trie.forEach(word => {
-        if (word.startsWith(prefix)) hasPrefix = true
-    })
+    for (const char of prefix) {
+        if (!current.children.hasOwnProperty(char)) {
+            return false
+        }
+        current = current.children[char]
+    }
     
-    return hasPrefix
+    return true
 };
 
 /** 
