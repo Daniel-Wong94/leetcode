@@ -47,5 +47,5 @@ class Solution:
                 if 0 <= neighbor_x < len(heights) and 0 <= neighbor_y < len(heights[0]):
                     if heights[row][col] <= heights[neighbor_x][neighbor_y]:
                         atlantic_queue.append((neighbor_x, neighbor_y))
-        print(atlantic, pacific)
+                        
         return list(pacific.intersection(atlantic))
