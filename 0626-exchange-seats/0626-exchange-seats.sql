@@ -1,16 +1,16 @@
 # Write your MySQL query statement below
-SELECT 
+SELECT
     (CASE
-        WHEN MOD(id, 2) != 0 AND max_seats != id THEN id + 1 # Odd id and not last seat
-        WHEN MOD(id, 2) != 0 AND max_seats = id THEN id      # Odd id and IS last seat 
-        ELSE id - 1                                          # Even id, take the previous id
-     END) as id,
-     student                                                 # no need to swap student name
+        WHEN MOD(id, 2) != 0 AND id != max_seat THEN id + 1
+        WHEN MOD(id, 2) != 0 AND id = max_seat THEN id
+        ELSE id - 1
+    END) as id,
+    student
 FROM
-    seat,
-    (SELECT                                                  # Sub query gives us access to max_seats
-        MAX(id) AS max_seats
+    Seat,
+    (SELECT
+        MAX(id) as max_seat
     FROM
-        Seat) as seat_counts
+        Seat) as seat_count
 ORDER BY
     id
