@@ -8,7 +8,7 @@ SELECT
      student                                                 # no need to swap student name
 FROM
     seat,
-    (SELECT
+    (SELECT                                                  # Sub query gives us access to max_seats
         MAX(id) AS max_seats
     FROM
         Seat) as seat_counts
