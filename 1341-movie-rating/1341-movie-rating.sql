@@ -1,9 +1,9 @@
 # Write your MySQL query statement below
 # 1. Get the name of user who has rated the most number of movies
-#   - If tie number, return the lexicographically smaller name
+#   - If tie number, return the lexicographically smaller name (ORDER BY)
 # 2. Get the movie name with highest avg rating in Feb 2020
-#   - If tie, return the lexicographically smaller name
-# Use a union for two separate queries
+#   - If tie, return the lexicographically smaller name (ORDER BY)
+# Use a union for the two separate queries
 
 (SELECT
    u.name AS results
