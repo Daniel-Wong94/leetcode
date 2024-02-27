@@ -4,25 +4,14 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    const result = []
+    let prev = {};
     
-    const sorted = nums.slice().sort((a, b) => a - b)
-    
-    let left = 0;
-    let right = sorted.length - 1;
-    
-    while (left < right) {
-        const sum = sorted[left] + sorted[right]
-        
-        if (sum > target) {
-            right--;
-        } else if (sum < target) {
-            left++;
+    for (let i = 0; i < nums.length; i++) {
+        let complement = target - nums[i];
+        if (complement in prev) {
+            return [prev[complement], i];
         } else {
-            result.push(sorted[left], sorted[right])
-            break;
+            prev[nums[i]] = i;
         }
     }
-    
-    return [nums.indexOf(result[0]), nums.lastIndexOf(result[1])]
 };
