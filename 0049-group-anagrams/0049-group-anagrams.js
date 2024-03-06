@@ -3,7 +3,7 @@
  * @return {string[][]}
  */
 
-// 
+// n = length of strs; Time: O(n^2); Space: O(n)
 const groupAnagrams = strs => {
     const tracker = {}
     
