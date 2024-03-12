@@ -22,6 +22,7 @@
 
 // optimized O(n)
 // restart the curr subarray whenever num is negative
+// since we know a negative number will never increase our running sum
 var maxSubArray = function(nums) {
     let currSubArray = nums[0]
     let maxSubArray = nums[0]
