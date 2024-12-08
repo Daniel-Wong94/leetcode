@@ -1,4 +1,10 @@
 function containsDuplicate(nums: number[]): boolean {
-    const numsSet = new Set(nums)
-    return nums.length !== numsSet.size
+    const history = {}
+    
+    for (const num of nums) {
+        if (history[num]) return history[num]
+        else history[num] = true
+    }
+    
+    return false
 };
