@@ -9,6 +9,6 @@ function canPermutePalindrome(s: string): boolean {
         if (counter[char] % 2 === 0) evens++
         if (counter[char] % 2 !== 0) evens--
     }
-    console.log(counter, evens)
+
     return -1 <= evens && evens <= 1
 };
